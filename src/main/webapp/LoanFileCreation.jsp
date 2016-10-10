@@ -1,31 +1,49 @@
-
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html lang="fa" >
+<html lang="fa">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <%@ page contentType="text/html; charset=UTF-8" %>
-    <title>Title</title>
+    <title>تشکیل پرونده تسهیلاتی</title>
+
     <script>
         function showCustomerInfo() {
-            var xRequest1;
+            var request;
             if (window.XMLHttpRequest) {
-                xRequest1 = new XMLHttpRequest();
+                request = new XMLHttpRequest();
             } else {
-                xRequest1 = new ActiveXObject("Microsoft.XMLHTTP");
+                request = new ActiveXObject("Microsoft.XMLHTTP");
             }
-            xRequest1.onreadystatechange = function () {
-                if ((xRequest1.readyState == 4) && (xRequest1.status == 200)) {
-                    document.getElementById("CustomerInfo").innerHTML
-                            = xRequest1.response;
+            document.getElementById("test").innerHTML
+                    =  document.getElementById("customerId").value;
+            request.setAttribute("customerId", document.getElementById("customerId").value)
+            request.onreadystatechange = function () {
+                document.getElementById("test").innerHTML
+                        = request.responseText;
+                if ((request.readyState == 4) && (request.status == 200)) {
+                    document.getElementById("firstName").innerHTML
+                            = request.response.getAttribute("firstName");
+                    document.getElementById("lastName").innerHTML
+                            = request.response.getAttribute("lastName");
+
+                    document.getElementById("test").innerHTML
+                            = "333333333333333";
                 }
             }
-            xRequest1.open("get", "/RetrieveCustomerInfoServlet", true);
-            xRequest1.send();
+            request.open("GET", "/RetrieveCustomerServlet", true);
+            request.send();
         }
     </script>
 </head>
 <body>
-
-
+شماره مشتری:<br>
+<input type="number" id="customerId" required><br>
+نام:<br>
+<input type="text" id="firstName" readonly><br>
+نام خانوادگی:<br>
+<input type="text" id="lastName" readonly><br>
+<div id="test">
+</div>
+<div class="home-button">
+    <button onclick="showCustomerInfo()">بازیابی</button>
+</div>
 </body>
 </html>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fa" >
+<html lang="fa">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <%@ page contentType="text/html; charset=UTF-8" %>
@@ -16,7 +16,7 @@
     </li>
     <li> تسهیلات
         <ul>
-            <li><a href="LoanFileCreation.html">ایجاد پرونده ی تسهیلاتی</a></li>
+            <li><a href="LoanFileCreation.jsp">ایجاد پرونده ی تسهیلاتی</a></li>
             <li><a href="LoanTypeCreation.jsp">ایجاد نوع تسهیلات</a></li>
         </ul>
     </li>

@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="fa">
 <head>
-
-    <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <%@ page import="dataAccess.entity.GrantCondition,java.util.ArrayList" %>
+    <%@ page contentType="text/html; charset=UTF-8" %>
+
+    <jsp:useBean class="dataAccess.entity.LoanType" scope="session" id="loanType"/>
+    <jsp:setProperty name="loanType" property="*"/>
+
     <title>ایجاد شرایط اعطا</title>
 
     <script>
@@ -15,26 +17,27 @@
             } else {
                 xRequest1 = new ActiveXObject("Microsoft.XMLHTTP");
             }
+
             xRequest1.onreadystatechange = function () {
                 if ((xRequest1.readyState == 4) && (xRequest1.status == 200)) {
                     document.getElementById("Show_update").innerHTML
                             = xRequest1.responseText;
                 }
             }
-            xRequest1.open("Post", "/SearchGrantConditionServlet", true);
+            xRequest1.open("GET", "/SearchGrantConditionServlet", true);
             xRequest1.send();
         }
         function enableRecord() {
             //document.getElementById("record").disabled = false;
-            //  showFields();
+              showFields();
             addGrantConditionsList();
             addRow("grantConditionsTable");
             return false;
         }
 
         function addGrantConditionsList(name) {
-            <%
-            GrantCondition grantCondition = new GrantCondition();
+           /* <%
+        /*    GrantCondition grantCondition = new GrantCondition();
             grantCondition.setName(request.getParameter("name"));
             grantCondition.setMinDuration(request.getParameter("minDuration"));
             grantCondition.setMaxDuration(request.getParameter("maxDuration"));
@@ -43,8 +46,8 @@
           //  grantConditionList.add(grantCondition);
             System.out.println("in jsp");
             System.out.println(grantCondition);
-         //   session.setAttribute("grantCondition",grantConditionList);
-            %>
+         //   session.setAttribute("grantCondition",grantConditionList);*/
+            %>*/
         }
 
         function getInput(value, name, type, readOnly) {
@@ -90,8 +93,6 @@
     </script>
 </head>
 <body>
-<jsp:useBean class="dataAccess.entity.LoanType" scope="session" id="loanType"/>
-<jsp:setProperty name="loanType" property="*"/>
 
 <%--<jsp:useBean id="loanTypeList" type="java.util.List<dataAccess.entity.LoanType>"
              scope="session"></jsp:useBean>--%>

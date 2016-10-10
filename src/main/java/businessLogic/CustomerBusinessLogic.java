@@ -4,6 +4,7 @@ import businessLogic.exception.DuplicateUniqueCodeException;
 import businessLogic.exception.EmptyFieldException;
 import businessLogic.exception.InValidNationalId;
 import dataAccess.CustomerCRUD;
+import dataAccess.entity.Customer;
 
 import javax.persistence.Column;
 import java.util.ArrayList;
@@ -69,19 +70,19 @@ public class CustomerBusinessLogic {
         }
     }
 
-    public static ArrayList<dataAccess.entity.Customer> selectFirstName(String firstName) {
+    public static ArrayList<Customer> selectFirstName(String firstName) {
         return CustomerCRUD.selectFirstName(firstName);
     }
 
-    public static ArrayList<dataAccess.entity.Customer> searchLastName(String lastName) {
+    public static ArrayList<Customer> searchLastName(String lastName) {
         return CustomerCRUD.searchLastName(lastName);
     }
 
-    public static ArrayList<dataAccess.entity.Customer> searchNationalId(String nationalId) {
+    public static ArrayList<Customer> searchNationalId(String nationalId) {
         return CustomerCRUD.selectNationalId(nationalId);
     }
 
-    public static ArrayList<dataAccess.entity.Customer> searchCustomerId(String customerId) {
+    public static ArrayList<Customer> searchCustomerId(String customerId) {
         return CustomerCRUD.searchCustomerId(customerId);
     }
 
