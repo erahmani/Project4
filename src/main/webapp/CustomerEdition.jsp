@@ -79,7 +79,7 @@
         <form name="registrationForm" action="CustomerEditionServlet" onsubmit="return validateForm()"
               method="POST">
             شماره مشتری:<br>
-            <input type="text" name="customerId" value="<%=customerId%>" required><br>
+            <input type="text" name="customerId" value="<%=customerId%>" readonly><br>
             نام:<br>
             <input type="text" name="firstName" value="<%=firstName%>" required><br>
             نام خانوادگی:<br>

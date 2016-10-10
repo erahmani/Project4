@@ -1,4 +1,4 @@
-package userInterface;
+package userInterface.loanUserInterface;
 
 import dataAccess.entity.GrantCondition;
 import dataAccess.entity.LoanType;

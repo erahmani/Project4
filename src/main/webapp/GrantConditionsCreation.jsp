@@ -4,14 +4,8 @@
 
     <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Grant Condition</title>
-
-    <%@ page import="dataAccess.entity.GrantCondition,
-                     java.util.ArrayList" %>
-
-    <%
-        ArrayList<GrantCondition> grantConditionList = new ArrayList<>();
-    %>
+    <%@ page import="dataAccess.entity.GrantCondition,java.util.ArrayList" %>
+    <title>ایجاد شرایط اعطا</title>
 
     <script>
         function showFields() {
@@ -46,10 +40,10 @@
             grantCondition.setMaxDuration(request.getParameter("maxDuration"));
             grantCondition.setMinCost(request.getParameter("minCost"));
             grantCondition.setMaxCost(request.getParameter("maxCost"));
-            grantConditionList.add(grantCondition);
+          //  grantConditionList.add(grantCondition);
             System.out.println("in jsp");
             System.out.println(grantCondition);
-            session.setAttribute("grantCondition",grantConditionList);
+         //   session.setAttribute("grantCondition",grantConditionList);
             %>
         }
 
@@ -91,14 +85,6 @@
 
             cell.appendChild(form);
 
-            /*var cell2 = row.insertCell(1);
-             cell2.innerHTML = rowCount + 1;
-
-             var cell3 = row.insertCell(2);
-             var element2 = document.createElement("input");
-             element2.type = "text";
-             element2.name = "txtbox[]";
-             cell3.appendChild(element2);*/
         }
 
     </script>

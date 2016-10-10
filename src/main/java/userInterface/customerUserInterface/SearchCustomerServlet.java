@@ -1,4 +1,4 @@
-package userInterface;
+package userInterface.customerUserInterface;
 
 import businessLogic.CustomerBusinessLogic;
 import dataAccess.entity.Customer;
