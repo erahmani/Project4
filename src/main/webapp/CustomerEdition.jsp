@@ -47,6 +47,10 @@
 
 <%
     }
+    String customerId = "";
+    if (request.getParameter("customerId") != null) {
+        customerId = request.getParameter("customerId").toString();
+    }
     String firstName = "";
     if (request.getParameter("firstName") != null) {
         firstName = request.getParameter("firstName").toString();
@@ -72,8 +76,10 @@
 <div class="relative">
     <center>
         <br>
-        <form name="registrationForm" action="CustomerRegistrationServlet" onsubmit="return validateForm()"
+        <form name="registrationForm" action="CustomerEditionServlet" onsubmit="return validateForm()"
               method="POST">
+            شماره مشتری:<br>
+            <input type="text" name="customerId" value="<%=customerId%>" required><br>
             نام:<br>
             <input type="text" name="firstName" value="<%=firstName%>" required><br>
             نام خانوادگی:<br>
@@ -82,7 +88,7 @@
             <input type="text" name="fatherName" value="<%=fatherName%>" required><br>
             تاریخ تولد:<br>
             <input type="date" name="birthDay" value="<%=birthDay%>" required/><br>
-           کد ملی:<br>
+            کد ملی:<br>
             <input type="number" name="nationalId" value="<%=nationalId%>" required><br><br>
             <input type="submit" value="ثبت">
             <input type="reset" value="بازنشانی">

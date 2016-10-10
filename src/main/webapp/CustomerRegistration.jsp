@@ -47,10 +47,6 @@
 
 <%
     }
-    String customerId = "";
-    if (request.getParameter("customerId") != null) {
-        customerId = request.getParameter("customerId").toString();
-    }
     String firstName = "";
     if (request.getParameter("firstName") != null) {
         firstName = request.getParameter("firstName").toString();
@@ -76,10 +72,9 @@
 <div class="relative">
     <center>
         <br>
-        <form name="registrationForm" action="EditCustomerServlet" onsubmit="return validateForm()"
+        <form name="registrationForm" action="CustomerRegistrationServlet" onsubmit="return validateForm()"
               method="POST">
-            شماره مشتری:<br>
-            <input type="text" name="customerId" value="<%=customerId%>" required><br>
+
             نام:<br>
             <input type="text" name="firstName" value="<%=firstName%>" required><br>
             نام خانوادگی:<br>

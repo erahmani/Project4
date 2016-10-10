@@ -14,6 +14,8 @@ import java.io.IOException;
 @WebServlet(name = "ChangeCustomerServlet", urlPatterns = {"/ChangeCustomerServlet"})
 public class ChangeCustomerServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
+        response.setCharacterEncoding("UTF-8");
         if (request.getParameter("Delete") != null) {
             String customerId = request.getParameter("customerId");
             CustomerBusinessLogic.deleteCustomer(Integer.parseInt(customerId));
