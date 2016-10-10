@@ -3,7 +3,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <%@ page contentType="text/html; charset=UTF-8" %>
-    <title>ثبت مشتری</title>
+    <title>ویرایش مشتری</title>
     <link rel="stylesheet" type="text/css" href="style.css">
 
     <script>
@@ -47,10 +47,6 @@
 
 <%
     }
-    String customerId = "";
-    if (request.getParameter("customerId") != null) {
-        customerId = request.getParameter("customerId").toString();
-    }
     String firstName = "";
     if (request.getParameter("firstName") != null) {
         firstName = request.getParameter("firstName").toString();
@@ -76,10 +72,8 @@
 <div class="relative">
     <center>
         <br>
-        <form name="registrationForm" action="EditCustomerServlet" onsubmit="return validateForm()"
+        <form name="registrationForm" action="CustomerRegistrationServlet" onsubmit="return validateForm()"
               method="POST">
-            شماره مشتری:<br>
-            <input type="text" name="customerId" value="<%=customerId%>" required><br>
             نام:<br>
             <input type="text" name="firstName" value="<%=firstName%>" required><br>
             نام خانوادگی:<br>

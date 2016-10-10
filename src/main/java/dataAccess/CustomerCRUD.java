@@ -38,30 +38,6 @@ public class CustomerCRUD extends Main {
         }
     }
 
-    public static List<Customer> readAll() {
-        List<Customer> customerList = null;
-        System.out.println(1);
-        Session session = SESSION_FACTORY.openSession();
-        Transaction transaction = null;
-        try {
-            transaction = session.beginTransaction();
-            customerList = session.createQuery("FROM Customer ").list();
-            transaction.commit();
-            System.out.println(2);
-        } catch (HibernateException ex) {
-            if (transaction != null) {
-                transaction.rollback();
-            }
-            System.out.println(3);
-            ex.printStackTrace();
-        } finally {
-            System.out.println(4);
-            session.close();
-        }
-        System.out.println(5);
-        return customerList;
-    }
-
     public static void delete(Integer id) {
         Session session = SESSION_FACTORY.openSession();
         Transaction transaction = null;
@@ -110,7 +86,7 @@ public class CustomerCRUD extends Main {
         Transaction transaction = null;
         try {
             transaction = session.beginTransaction();
-            customerList = session.createQuery("FROM Customer Where firstName = " + firstName).list();
+            customerList = session.createQuery("FROM Customer Where firstName = '" + firstName +"'").list();
             transaction.commit();
             System.out.println(2);
         } catch (HibernateException ex) {
@@ -134,7 +110,7 @@ public class CustomerCRUD extends Main {
         Transaction transaction = null;
         try {
             transaction = session.beginTransaction();
-            customerList = session.createQuery("FROM Customer Where lastName = " + lastName).list();
+            customerList = session.createQuery("FROM Customer Where lastName = '" + lastName  +"'").list();
             transaction.commit();
             System.out.println(2);
         } catch (HibernateException ex) {

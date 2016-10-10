@@ -15,27 +15,11 @@ import java.io.IOException;
 
 @WebServlet(name = "CustomerRegistrationServlet", urlPatterns = {"/CustomerRegistrationServlet"})
 public class CustomerRegistrationServlet extends HttpServlet {
-    private static String createSuccessfulRegisteredHTML(int customerId) {
-        return "<!DOCTYPE html>" +
-                "<head>" +
-                "<title>Title</title>" +
-                "</head>" +
-                "<body>" +
-                "<p ><font color=\"green\"><h2 >Successful registration, customer Id is " + customerId + "</h2></font></p>" +
-                "</body>" +
-                "<div class=\"home-button\">" +
-                "<a href=\"Main.jsp\">" +
-                "<button>Home</button>" +
-                "</a>" +
-                "</div>" +
-                "</html>";
-    }
-
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
         try {
-            int customerId = CustomerBusinessLogic.createNewCustomer(request.getParameter("firstName"), request.getParameter("lastName"),
+            int customerId = CustomerBusinessLogic.createCustomer(request.getParameter("firstName"), request.getParameter("lastName"),
                     request.getParameter("fatherName"), request.getParameter("birthDay"), request.getParameter("nationalId"));
             request.setAttribute("customerId", customerId);
             RequestDispatcher requestDispatcher = request.getRequestDispatcher("SuccessfulRegistration.jsp");

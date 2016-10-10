@@ -58,7 +58,7 @@ public class CustomerBusinessLogic {
         }
     }
 
-    public static int createNewCustomer(String firstName, String lastName, String fatherName, String birthDay, String nationalId) {
+    public static int createCustomer(String firstName, String lastName, String fatherName, String birthDay, String nationalId) {
         realCustomerFieldValidation(firstName, lastName, fatherName, birthDay, nationalId);
 
         ArrayList<dataAccess.entity.Customer> customerList = searchNationalId(nationalId);
