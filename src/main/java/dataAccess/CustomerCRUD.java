@@ -1,107 +1,201 @@
 package dataAccess;
 
 import dataAccess.entity.Customer;
-import org.hibernate.SessionFactory;
-import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
-import org.hibernate.cfg.Configuration;
-import org.hibernate.service.ServiceRegistry;
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 
-import java.sql.*;
-import java.util.LinkedList;
-import java.util.Properties;
+import java.util.ArrayList;
+import java.util.List;
 
-public class CustomerCRUD extends Main{
+public class CustomerCRUD extends Main {
 
-
-    public static void deleteCustomer(String customerId) {
-        Connection conn = null;//DB.connectDB();
-        String sql = "delete from bank.customer where customerId = " + customerId;
+    public static int create(String firstName, String lastName, String fatherName, String birthDay, String nationalId) {
+        Session session = SESSION_FACTORY.openSession();
+        Transaction transaction = null;
+        Customer customer = new Customer();
         try {
-            Statement stmt = conn.createStatement();
-            stmt.executeUpdate(sql);
-            conn.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
+            transaction = session.beginTransaction();
 
-    public static void insertRealCustomer(Customer customer) {
-        Connection conn = null;//DB.connectDB();
-        try {
-            String queryStr = "insert into realcustomer(firstName, lastName, fatherName, birthDay, nationalId) values(?, ?, ?, ?, ?, ?)";
-            PreparedStatement stmt = conn.prepareStatement(queryStr, Statement.RETURN_GENERATED_KEYS);
-            stmt.executeUpdate();
-            ResultSet rs = stmt.getGeneratedKeys();
-            rs.next();
-            customer.setCustomerId(Integer.toString(rs.getInt(1)));
+            customer.setFirstName(firstName);
+            customer.setLastName(lastName);
+            customer.setFatherName(fatherName);
+            customer.setBirthDay(birthDay);
+            customer.setNationalId(nationalId);
 
-            PreparedStatement preparedStatement = conn.prepareStatement(queryStr);
-            preparedStatement.setString(1, customer.getCustomerId());
-            preparedStatement.setString(2, customer.getFirstName());
-            preparedStatement.setString(3, customer.getLastName());
-            preparedStatement.setString(4, customer.getFatherName());
-            preparedStatement.setString(5, customer.getBirthDay());
-            preparedStatement.setString(6, customer.getNationalId());
-            preparedStatement.executeUpdate();
-            conn.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
+            session.save(customer);
+            transaction.commit();
+            System.out.println(customer.getCustomerId());
 
-    private static LinkedList<Customer> prepareRealCustomerSelectResult(ResultSet resultSet) {
-        LinkedList<Customer> customerList = new LinkedList();
-        try {
-            while (resultSet.next()) {
-                Customer customer = new Customer();
-                customer.setFirstName(resultSet.getString("firstName"));
-                customer.setLastName(resultSet.getString("lastName"));
-                customer.setFatherName(resultSet.getString("fatherName"));
-                customer.setBirthDay(resultSet.getString("birthDay"));
-                customer.setNationalId(resultSet.getString("nationalId"));
-                customer.setCustomerId(resultSet.getString("customerId"));
-                customerList.add(customer);
+        } catch (HibernateException ex) {
+            if (transaction != null) {
+                transaction.rollback();
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
+            ex.printStackTrace();
+        } finally {
+            session.close();
+            return customer.getCustomerId();
         }
+    }
+
+    public static List<Customer> readAll() {
+        List<Customer> customerList = null;
+        System.out.println(1);
+        Session session = SESSION_FACTORY.openSession();
+        Transaction transaction = null;
+        try {
+            transaction = session.beginTransaction();
+            customerList = session.createQuery("FROM Customer ").list();
+            transaction.commit();
+            System.out.println(2);
+        } catch (HibernateException ex) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            System.out.println(3);
+            ex.printStackTrace();
+        } finally {
+            System.out.println(4);
+            session.close();
+        }
+        System.out.println(5);
         return customerList;
     }
 
-    public static LinkedList<Customer> selectRealCustomer(String searchOption, String searchValue) {
-        Connection conn = null;//DB.connectDB();
-        LinkedList<Customer> customerList = null;
+    public static void delete(Integer id) {
+        Session session = SESSION_FACTORY.openSession();
+        Transaction transaction = null;
         try {
-            String queryStr = "SELECT * FROM realcustomer WHERE " + searchOption + " = '" + searchValue + "'";
-            PreparedStatement preparedStatement = conn.prepareStatement(queryStr);
-            ResultSet resultSet = preparedStatement.executeQuery(queryStr);
-            if (resultSet != null) {
-                customerList = prepareRealCustomerSelectResult(resultSet);
+            transaction = session.beginTransaction();
+            Customer customer = (Customer) session.get(Customer.class, id);
+            session.delete(customer);
+            transaction.commit();
+        } catch (HibernateException ex) {
+            if (transaction != null) {
+                transaction.rollback();
             }
-            resultSet.close();
-            conn.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
+            ex.printStackTrace();
+        } finally {
+            session.close();
         }
-        return customerList;
     }
 
-    public static void updateRealCustomer(Customer customer) {
+    public static void update(Integer customerId, String firstName, String lastName, String fatherName, String birthDay, String nationalId) {
+        Session session = SESSION_FACTORY.openSession();
+        Transaction transaction = null;
         try {
-            Connection conn = null;//DB.connectDB();
-            String queryStr = "UPDATE RealCustomer SET firstName=?, lastName=?, fatherName=?, birthDay=?, nationalId=? WHERE customerId = " + customer.getCustomerId();
-            PreparedStatement stmt = conn.prepareStatement(queryStr);
-            stmt.setString(1, customer.getFirstName());
-            stmt.setString(2, customer.getLastName());
-            stmt.setString(3, customer.getFatherName());
-            stmt.setString(4, customer.getBirthDay());
-            stmt.setString(5, customer.getNationalId());
-
-            stmt.executeUpdate();
-            conn.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
+            transaction = session.beginTransaction();
+            Customer customer = (Customer) session.get(Customer.class, customerId);
+            customer.setFirstName(firstName);
+            customer.setLastName(lastName);
+            customer.setFatherName(fatherName);
+            customer.setBirthDay(birthDay);
+            customer.setNationalId(nationalId);
+            session.update(customer);
+            transaction.commit();
+        } catch (HibernateException ex) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            ex.printStackTrace();
+        } finally {
+            session.close();
         }
     }
 
+    public static ArrayList<Customer> selectFirstName(String firstName) {
+        List<Customer> customerList = new ArrayList<Customer>();
+        System.out.println(1);
+        Session session = SESSION_FACTORY.openSession();
+        Transaction transaction = null;
+        try {
+            transaction = session.beginTransaction();
+            customerList = session.createQuery("FROM Customer Where firstName = " + firstName).list();
+            transaction.commit();
+            System.out.println(2);
+        } catch (HibernateException ex) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            System.out.println(3);
+            ex.printStackTrace();
+        } finally {
+            System.out.println(4);
+            session.close();
+        }
+        System.out.println(5);
+        return (ArrayList<Customer>) customerList;
+    }
+
+    public static ArrayList<Customer> searchLastName(String lastName) {
+        List<Customer> customerList = new ArrayList<Customer>();
+        System.out.println(1);
+        Session session = SESSION_FACTORY.openSession();
+        Transaction transaction = null;
+        try {
+            transaction = session.beginTransaction();
+            customerList = session.createQuery("FROM Customer Where lastName = " + lastName).list();
+            transaction.commit();
+            System.out.println(2);
+        } catch (HibernateException ex) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            System.out.println(3);
+            ex.printStackTrace();
+        } finally {
+            System.out.println(4);
+            session.close();
+        }
+        System.out.println(5);
+        return (ArrayList<Customer>) customerList;
+    }
+
+    public static ArrayList<Customer> selectNationalId(String nationalId) {
+        List<Customer> customerList = new ArrayList<Customer>();
+        System.out.println(1);
+        Session session = SESSION_FACTORY.openSession();
+        Transaction transaction = null;
+        try {
+            transaction = session.beginTransaction();
+            customerList = session.createQuery("FROM Customer Where nationalId = '" + nationalId + "'").list();
+            transaction.commit();
+            System.out.println(2);
+        } catch (HibernateException ex) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            System.out.println(3);
+            ex.printStackTrace();
+        } finally {
+            System.out.println(4);
+            session.close();
+        }
+        System.out.println(5);
+        return (ArrayList<Customer>) customerList;
+    }
+
+    public static ArrayList<Customer> searchCustomerId(String customerId) {
+        List<Customer> customerList = new ArrayList<Customer>();
+        System.out.println(1);
+        Session session = SESSION_FACTORY.openSession();
+        Transaction transaction = null;
+        try {
+            transaction = session.beginTransaction();
+            customerList = session.createQuery("FROM Customer Where customerId = " + customerId).list();
+            transaction.commit();
+            System.out.println(2);
+        } catch (HibernateException ex) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            System.out.println(3);
+            ex.printStackTrace();
+        } finally {
+            System.out.println(4);
+            session.close();
+        }
+        System.out.println(5);
+        return (ArrayList<Customer>) customerList;
+    }
 }

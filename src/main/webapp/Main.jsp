@@ -70,16 +70,16 @@
 
 <body>
 <ul class="makeMenu">
-    <li> Customer
+    <li> مشتری
         <ul>
-            <li><a href="CustomerRegistration.html">Customer Registration</a></li>
-            <li><a href="SearchCustomer.html">Search Customer</a></li>
+            <li><a href="CustomerRegistration.jsp">ثبت نام مشتری </a></li>
+            <li><a href="SearchCustomer.jsp">جستجوی مشتری</a></li>
         </ul>
     </li>
-    <li> Loan
+    <li> تسهیلات
         <ul>
-            <li><a href="LoanFileCreation.html">Create Loan File</a></li>
-            <li><a href="LoanTypeCreation.jsp">Create Loan Type</a></li>
+            <li><a href="LoanFileCreation.html">ایجاد پرونده ی تسهیلاتی</a></li>
+            <li><a href="LoanTypeCreation.jsp">ایجاد نوع تسهیلات</a></li>
         </ul>
     </li>
 </ul>

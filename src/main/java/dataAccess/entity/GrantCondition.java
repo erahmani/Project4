@@ -1,7 +1,6 @@
 package dataAccess.entity;
 
 import javax.persistence.*;
-import java.io.Serializable;
 
 @Entity
 @Table
@@ -91,7 +90,7 @@ public class GrantCondition{
 
     @Override
     public String toString() {
-        return "name: " + name + "minDuration: " + minDuration + "maxDuration: " + maxDuration + "minCost: " + minCost + "maxCost: " + maxCost + "\n";
+        return "name: " + name + " minDuration: " + minDuration + " maxDuration: " + maxDuration + " minCost: " + minCost + " maxCost: " + maxCost + "\n";
     }
 
     public LoanType getLoanType() {

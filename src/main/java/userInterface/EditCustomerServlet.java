@@ -2,8 +2,6 @@ package userInterface;
 
 import businessLogic.CustomerBusinessLogic;
 import businessLogic.exception.DuplicateUniqueCodeException;
-import dataAccess.entity.Customer;
-
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -25,8 +23,9 @@ public class EditCustomerServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
             System.out.println("Economic Code: " + request.getParameter("economicCode"));
-            Customer customer = Utility.initRealCustomer(request);
-            CustomerBusinessLogic.editCustomer(customer);
+
+            CustomerBusinessLogic.editCustomer(Integer.parseInt(request.getParameter("customerId")), request.getParameter("firstName"), request.getParameter("lastName"),
+                    request.getParameter("fatherName"), request.getParameter("birthDay"),request.getParameter("nationalId"));
             PrintWriter printWriter = response.getWriter();
             printWriter.println(createEditSuccessfulHTML());
         } catch (DuplicateUniqueCodeException e) {
@@ -45,7 +44,7 @@ public class EditCustomerServlet extends HttpServlet {
                 "<p ><font color=\"green\"><h2 >Successful Edit !!</h2></font></p>" +
                 "</body>" +
                 "<div class=\"home-button\">" +
-                "<a href=\"Main.html\">" +
+                "<a href=\"Main.jsp\">" +
                 "<button>Home</button>" +
                 "</a>" +
                 "</div>" +
@@ -106,7 +105,7 @@ public class EditCustomerServlet extends HttpServlet {
                 "nationalId:<br>\n" +
                 "<input type = \"number\" name = \"nationalId\" value = \"" + request.getParameter("nationalId") + "\" required> <br>\n" +
 
-                "<input type = \"hidden\" name = \"customerType\" value = \"Customer\" required> <br>\n" +
+                "<input type = \"hidden\" name = \"customerType\" value = \"CustomerBusinessLogic\" required> <br>\n" +
                 "<input type=\"submit\" value=\"Submit\">" +
                 "<input type=\"reset\" value=\"Reset\">" +
                 "</form>" +
@@ -114,7 +113,7 @@ public class EditCustomerServlet extends HttpServlet {
                 "</div>" +
 
                 "<div class=\"home-button\">" +
-                "<a href=\"Main.html\">" +
+                "<a href=\"Main.jsp\">" +
                 "<button>Home</button>" +
                 "</a>" +
                 "</div>" +

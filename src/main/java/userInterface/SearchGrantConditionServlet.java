@@ -15,9 +15,9 @@ import java.util.List;
 @WebServlet(name = "SearchGrantConditionServlet", urlPatterns = {"/SearchGrantConditionServlet"})
 public class SearchGrantConditionServlet extends HttpServlet {
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         LoanType loanType = (LoanType) request.getSession().getAttribute("loanType");
-        GrantCondition grantCondition = (GrantCondition) request.getSession().getAttribute("grantCondition");
+        ArrayList<GrantCondition> grantCondition = (ArrayList<GrantCondition>) request.getSession().getAttribute("grantCondition");
         System.out.println("hkashdfkahsdfkhaksdfhk " + loanType);
         System.out.println("hkashdfkahsdfkhaksdfhk " + grantCondition);
 
@@ -41,7 +41,6 @@ public class SearchGrantConditionServlet extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
         response.getWriter().print(html);
     }
-
 
     private String getGrantConditionsTable(List<GrantCondition> grantConditionList) {
         String beginHtml = "<center>" + "<table>" +

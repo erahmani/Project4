@@ -22,7 +22,7 @@ public class ChangeCustomerServlet extends HttpServlet {
                 "<body>" +
                 "<p ><font color=\"green\"><h2 >Successful deletion </h2></font></p>" +
                 "<div class=\"home-button\">" +
-                "<a href=\"Main.html\">" +
+                "<a href=\"Main.jsp\">" +
                 "<button>Home</button>" +
                 "</a>" +
                 "</div>" +
@@ -33,7 +33,7 @@ public class ChangeCustomerServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (request.getParameter("Delete") != null) {
             String customerId = request.getParameter("customerId");
-            CustomerBusinessLogic.deleteCustomer(customerId);
+            CustomerBusinessLogic.deleteCustomer(Integer.parseInt(customerId));
             String html = createSuccessfulDeletedHTML();
             PrintWriter printWriter = response.getWriter();
             printWriter.println(html);
@@ -99,14 +99,14 @@ public class ChangeCustomerServlet extends HttpServlet {
                 "<input type = \"number\" name = \"nationalId\" value = \"" + request.getParameter("nationalId") + "\" required> <br>\n" +
 
 
-                "<input type = \"hidden\" name = \"customerType\" value = \"Customer\" required> <br>\n" +
+                "<input type = \"hidden\" name = \"customerType\" value = \"CustomerBusinessLogic\" required> <br>\n" +
                 "<input type=\"submit\" value=\"Submit\">" +
                 "<input type=\"reset\" value=\"Reset\">" +
                 "</form>" +
                 "</center>" +
                 "</div>" +
                 "<div class=\"home-button\">" +
-                "<a href=\"Main.html\">" +
+                "<a href=\"Main.jsp\">" +
                 "<button>Home</button>" +
                 "</a>" +
                 "</div>" +

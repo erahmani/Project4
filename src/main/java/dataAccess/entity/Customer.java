@@ -1,14 +1,31 @@
 package dataAccess.entity;
 
+import javax.persistence.*;
+
+@Entity
+@Table
 public class Customer {
-    private String customerId;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(unique = true)
+    private Integer customerId;
+
+    @Column(nullable = false)
     private String firstName;
+
+    @Column(nullable = false)
     private String lastName;
+
+    @Column(nullable = false)
     private String fatherName;
+
+    @Column(nullable = false)
     private String birthDay;
+
+    @Column(nullable = false)
     private String nationalId;
 
-    public void setCustomerId(String customerId) {
+    public void setCustomerId(Integer customerId) {
         this.customerId = customerId;
     }
 
@@ -52,7 +69,7 @@ public class Customer {
         return nationalId;
     }
 
-    public String getCustomerId() {
+    public Integer getCustomerId() {
         return customerId;
     }
 }

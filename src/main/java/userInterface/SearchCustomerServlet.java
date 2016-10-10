@@ -1,7 +1,6 @@
 package userInterface;
 
 import businessLogic.CustomerBusinessLogic;
-import dataAccess.entity.Customer;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,11 +9,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.LinkedList;
+import java.util.ArrayList;
 
 @WebServlet(name = "SearchCustomerServlet", urlPatterns = {"/SearchCustomerServlet"})
 public class SearchCustomerServlet extends HttpServlet {
-    private static String createRealCustomerSearchHTMLResult(String searchOption, String searchValue, LinkedList<Customer> legalCustomerList) {
+    private static String createRealCustomerSearchHTMLResult(String searchOption, String searchValue, ArrayList<dataAccess.entity.Customer> legalCustomerList) {
         String beginHtml = "<!DOCTYPE html>" +
                 "<html>" +
                 "<head>" +
@@ -62,7 +61,7 @@ public class SearchCustomerServlet extends HttpServlet {
                 "<th> birthDay </th> \n" +
                 "<th> nationalId </th> \n";
         String tableRows = "";
-        for (Customer customer : legalCustomerList) {
+        for (dataAccess.entity.Customer customer : legalCustomerList) {
             tableRows +=
                     "<tr >" + "<form action = \" ChangeCustomerServlet \" method = \" Get \" >\n" +
                             "<td><input type = \"text\" name = \"customerId\" value = \"" + customer.getCustomerId() + "\" readonly ></td>\n" +
@@ -71,7 +70,7 @@ public class SearchCustomerServlet extends HttpServlet {
                             "<td><input type = \"text\" name = \"fatherName\" value = \"" + customer.getFatherName() + "\" readonly ></td>\n" +
                             "<td><input type = \"text\" name = \"birthDay\" value = \"" + customer.getBirthDay() + "\" readonly ></td>\n" +
                             "<td><input type = \"text\" name = \"nationalId\" value = \"" + customer.getNationalId() + "\" readonly ></td>\n" +
-                            "<input type = \"hidden\" name = \"customerType\" value = \"Customer\" required> <br>\n" +
+                            "<input type = \"hidden\" name = \"customerType\" value = \"CustomerBusinessLogic\" required> <br>\n" +
                             "<td ><input type = \"submit\" name = \"Edit\" value = \"Edit\" ></td >" +
                             "<td ><input type = \"submit\" name = \"Delete\" value = \"Delete\" ></td >" +
                             "</tr >";
@@ -83,7 +82,7 @@ public class SearchCustomerServlet extends HttpServlet {
                 "</center>" +
                 "</div>" +
                 "<div class=\"home-button\">" +
-                "<a href=\"Main.html\">" +
+                "<a href=\"Main.jsp\">" +
                 "<button>Home</button>" +
                 "</a>" +
                 "</div>" +
@@ -96,7 +95,7 @@ public class SearchCustomerServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String searchOption = req.getParameter("searchOption");
         String searchValue = req.getParameter("searchValue");
-        LinkedList<Customer> customerList = CustomerBusinessLogic.searchRealCustomer(searchOption, searchValue);
+        ArrayList<dataAccess.entity.Customer> customerList = CustomerBusinessLogic.searchLastName(searchValue);
         String html = createRealCustomerSearchHTMLResult(searchOption, searchValue, customerList);
         PrintWriter printWriter = resp.getWriter();
         printWriter.println(html);

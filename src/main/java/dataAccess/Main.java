@@ -14,15 +14,15 @@ import java.util.Properties;
  * Created by dotinschool1 on 10/8/2016.
  */
 public class Main {
-    protected final static SessionFactory SESSION_FACTORY = null; //new Configuration().
-          //  configure().buildSessionFactory();
+    protected final static SessionFactory SESSION_FACTORY = new Configuration().
+            configure().buildSessionFactory();
 
-   public static void main(String[] s) {
+ //  public static void main(String[] s) {
         //LoanType loanType = LoanTypeCRUD.create("234", "1");
         //GrantConditionCRUD.create("نشسابشسنتیباشسب", "1", "3", "1", "3", loanType);
         //GrantConditionCRUD.create("ضصثخهصثعضقخف", "3", "4", "1", "3", loanType);
     //    List<GrantCondition> grantConditionList = GrantConditionCRUD.readAll();
       //  System.out.println(grantConditionList);
-       System.out.println("منتسیبمسنتیب");
-    }
+   //    System.out.println("منتسیبمسنتیب");
+   // }
 }

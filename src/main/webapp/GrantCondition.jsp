@@ -6,6 +6,13 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Grant Condition</title>
 
+    <%@ page import="dataAccess.entity.GrantCondition,
+                     java.util.ArrayList" %>
+
+    <%
+        ArrayList<GrantCondition> grantConditionList = new ArrayList<>();
+    %>
+
     <script>
         function showFields() {
             var xRequest1;
@@ -24,32 +31,65 @@
             xRequest1.send();
         }
         function enableRecord() {
-            document.getElementById("record").disabled = false;
+            //document.getElementById("record").disabled = false;
             //  showFields();
+            addGrantConditionsList();
             addRow("grantConditionsTable");
             return false;
         }
 
+        function addGrantConditionsList(name) {
+            <%
+            GrantCondition grantCondition = new GrantCondition();
+            grantCondition.setName(request.getParameter("name"));
+            grantCondition.setMinDuration(request.getParameter("minDuration"));
+            grantCondition.setMaxDuration(request.getParameter("maxDuration"));
+            grantCondition.setMinCost(request.getParameter("minCost"));
+            grantCondition.setMaxCost(request.getParameter("maxCost"));
+            grantConditionList.add(grantCondition);
+            System.out.println("in jsp");
+            System.out.println(grantCondition);
+            session.setAttribute("grantCondition",grantConditionList);
+            %>
+        }
+
+        function getInput(value, name, type, readOnly) {
+            var element = document.createElement("input");
+            element.value = value;
+            element.name = name;
+            element.type = type;
+            element.readOnly = readOnly;
+            return element;
+        }
         function addRow(tableID) {
-
-
-
             var table = document.getElementById(tableID);
 
             var rowCount = table.rows.length;
-            document.getElementById("Show_update").innerHTML
-                    = rowCount;
             var row = table.insertRow(rowCount);
 
-            var cell1 = row.insertCell(0);
-            var name = document.createElement("input");
-            name.value = document.getElementById("name").nodeValue;
-            cell1.appendChild(name);
+            var cell = row.insertCell(0);
+            var form = document.createElement("form");
+            form.action = "GrantCondition2.jsp";
 
-            var cell2 = row.insertCell(1);
-            var minDuration = document.createElement("input");
-            minDuration.value = document.getElementById("minDuration").nodeValue;
-            cell1.appendChild(minDuration);
+            var name = getInput(document.getElementById("name").value, "name", "text", "true");
+            form.appendChild(name);
+            var minDuration = getInput(document.getElementById("minDuration").value, "minDuration", "number", "true");
+            form.appendChild(minDuration);
+            var maxDuration = getInput(document.getElementById("maxDuration").value, "maxDuration", "number", "true");
+            form.appendChild(maxDuration);
+            var minCost = getInput(document.getElementById("minCost").value, "minCost", "number", "true");
+            form.appendChild(minCost);
+            var maxCost = getInput(document.getElementById("maxCost").value, "maxCost", "number", "true");
+            form.appendChild(maxCost);
+
+            var submit = document.createElement("input");
+            submit.value = "ثبت";
+            submit.id = "record";
+            submit.type = "submit";
+            // submit.disabled = true;
+            form.appendChild(submit);
+
+            cell.appendChild(form);
 
             /*var cell2 = row.insertCell(1);
              cell2.innerHTML = rowCount + 1;
@@ -70,35 +110,32 @@
 <%--<jsp:useBean id="loanTypeList" type="java.util.List<dataAccess.entity.LoanType>"
              scope="session"></jsp:useBean>--%>
 
-<form action="GrantCondition2.jsp">
-    Grant Name:
-    <br>
-    <input type="String" name="name" Id="name">
-    <br>
+Grant Name:
+<br>
+<input type="String" name="name" id="name">
+<br>
 
-    Contract Minimum Duration:
-    <br>
-    <input type="number" name="minDuration" id="number">
-    <br>
+Contract Minimum Duration:
+<br>
+<input type="number" name="minDuration" id="minDuration">
+<br>
 
-    Contract Maximum Duration:
-    <br>
-    <input type="number" name="maxDuration">
-    <br>
+Contract Maximum Duration:
+<br>
+<input type="number" name="maxDuration" id="maxDuration">
+<br>
 
-    Contract Minimum Cost:
-    <br>
-    <input type="number" name="minCost">
-    <br>
+Contract Minimum Cost:
+<br>
+<input type="number" name="minCost" id="minCost">
+<br>
 
-    Contract Maximum Cost:
-    <br>
-    <input type="number" name="maxCost">
-    <br>
+Contract Maximum Cost:
+<br>
+<input type="number" name="maxCost" id="maxCost">
+<br>
 
-    <input type="button" value="تعریف" onclick="return enableRecord()">
-    <input type="submit" value="ثبت" id="record" disabled>
-</form>
+<input type="button" value="تعریف" onclick="return enableRecord()">
 
 <div id="Show_update">
     gsdghsfghsfghdfgh
@@ -107,11 +144,6 @@
 <table id="grantConditionsTable">
     <tr>
         <td>fghdfgh</td>
-        <td>dfgsdfg</td>
-        <td>sdfgsdg</td>
-        <td>asdf</td>
-        <td>fasdf</td>
-        <td>fasdf</td>
     </tr>
 </table>
 

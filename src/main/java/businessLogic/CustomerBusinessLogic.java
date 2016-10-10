@@ -2,57 +2,102 @@ package businessLogic;
 
 import businessLogic.exception.DuplicateUniqueCodeException;
 import businessLogic.exception.EmptyFieldException;
+import businessLogic.exception.InValidNationalId;
 import dataAccess.CustomerCRUD;
-import dataAccess.entity.Customer;
 
-import java.util.LinkedList;
+import javax.persistence.Column;
+import java.util.ArrayList;
 
-public class CustomerBusinessLogic  {
+public class CustomerBusinessLogic {
 
-    private static void realCustomerFieldValidation(Customer customer) {
-        if (customer.getFirstName().isEmpty()) {
+    private String customerId;
+    @Column(nullable = false)
+    private String firstName;
+    @Column(nullable = false)
+    private String lastName;
+    @Column(nullable = false)
+    private String fatherName;
+    @Column(nullable = false)
+    private String birthDay;
+
+    private static void realCustomerFieldValidation(String firstName, String lastName, String fatherName, String birthDay, String nationalId) {
+        if (firstName.isEmpty()) {
             throw new EmptyFieldException("First Name Is Empty!");
         }
-        if (customer.getLastName().isEmpty()) {
+        if (lastName.isEmpty()) {
             throw new EmptyFieldException("Last Name Is Empty!");
         }
-        if (customer.getFatherName().isEmpty()) {
+        if (fatherName.isEmpty()) {
             throw new EmptyFieldException("Father Name Is Empty!");
         }
-        if (customer.getBirthDay().isEmpty()) {
+        if (birthDay.isEmpty()) {
             throw new EmptyFieldException("Birth Day Is Empty!");
         }
-        if (customer.getNationalId().isEmpty()) {
+        if (nationalId.isEmpty()) {
             throw new EmptyFieldException("National ID Is Empty!");
+        } else if (!isValidNationalId(nationalId)) {
+            throw new InValidNationalId("National ID Is not Valid");
         }
     }
 
-    public static void createNewCustomer(Customer customer) {
-        realCustomerFieldValidation(customer);
-        LinkedList<Customer> customerList = CustomerCRUD.selectRealCustomer("nationalId", customer.getNationalId());
+    private static boolean isValidNationalId(String nationalId) {
+        if (nationalId.length() != 10) {
+            return false;
+        } else {
+            int check = 0;
+            for (int i = 0; i < nationalId.length() - 1; i++) {
+                int num = Integer.parseInt(nationalId.substring(i, i + 1));
+                check += num * (10 - i);
+            }
+            if (check % 11 == Integer.parseInt(nationalId.substring(nationalId.length() - 1, nationalId.length()))
+                    || check % 11 == 11 - Integer.parseInt(nationalId.substring(nationalId.length() - 1, nationalId.length()))) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    }
+
+    public static int createNewCustomer(String firstName, String lastName, String fatherName, String birthDay, String nationalId) {
+        realCustomerFieldValidation(firstName, lastName, fatherName, birthDay, nationalId);
+
+        ArrayList<dataAccess.entity.Customer> customerList = searchNationalId(nationalId);
         if (customerList.size() == 0) {
-            CustomerCRUD.insertRealCustomer(customer);
+            return CustomerCRUD.create(firstName, lastName, fatherName, birthDay, nationalId);
         } else {
             throw new DuplicateUniqueCodeException("This National Is Inserted !!!");
         }
     }
 
-    public static LinkedList<Customer> searchRealCustomer(String searchOption, String searchValue) {
-        return CustomerCRUD.selectRealCustomer(searchOption, searchValue);
+    public static ArrayList<dataAccess.entity.Customer> selectFirstName(String firstName) {
+        return CustomerCRUD.selectFirstName(firstName);
     }
 
-    public static void editCustomer(Customer customer) {
-        realCustomerFieldValidation(customer);
-        LinkedList<Customer> customerList = CustomerCRUD.selectRealCustomer("nationalId", customer.getNationalId());
-        System.out.println();
-        if (customerList.size() == 0 || (customerList.size() == 1 && customerList.get(0).getCustomerId().equals(customer.getCustomerId()))) {
-            CustomerCRUD.updateRealCustomer(customer);
+    public static ArrayList<dataAccess.entity.Customer> searchLastName(String lastName) {
+        return CustomerCRUD.searchLastName(lastName);
+    }
+
+    public static ArrayList<dataAccess.entity.Customer> searchNationalId(String nationalId) {
+        return CustomerCRUD.selectNationalId(nationalId);
+    }
+
+    public static ArrayList<dataAccess.entity.Customer> searchCustomerId(String customerId) {
+        return CustomerCRUD.searchCustomerId(customerId);
+    }
+
+    public static void editCustomer(Integer customerId, String firstName, String lastName, String fatherName, String birthDay, String nationalId) {
+        realCustomerFieldValidation(firstName, lastName, fatherName, birthDay, nationalId);
+        ArrayList<dataAccess.entity.Customer> customerList = searchNationalId(nationalId);
+        if (customerList.size() == 0 || (customerList.size() == 1 && customerList.get(0).getCustomerId().equals(customerId))) {
+            CustomerCRUD.update(customerId, firstName, lastName, fatherName, birthDay, nationalId);
         } else {
-            throw new DuplicateUniqueCodeException("This Economic Code Is Inserted !!!");
+            throw new DuplicateUniqueCodeException("National Id Is Inserted !!!");
         }
     }
 
-    public static void deleteCustomer(String customerId) {
-        CustomerCRUD.deleteCustomer(customerId);
+    public static void deleteCustomer(Integer customerId) {
+        CustomerCRUD.delete(customerId);
     }
+
+
 }
