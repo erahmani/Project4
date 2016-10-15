@@ -13,8 +13,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 
-@WebServlet(name = "RetrieveCustomerServlet", urlPatterns = {"/RetrieveCustomerServlet"})
-public class RetrieveCustomerServlet extends HttpServlet {
+@WebServlet(name = "CustomerRetrieveServlet", urlPatterns = {"/CustomerRetrieveServlet"})
+public class CustomerRetrieveServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
       //  request.setCharacterEncoding("UTF-8");
        // response.setCharacterEncoding("UTF-8");

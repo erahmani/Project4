@@ -1,5 +1,6 @@
 package businessLogic;
 
+import businessLogic.exception.EmptyGrantConditionException;
 import dataAccess.LoanTypeCRUD;
 import dataAccess.entity.GrantCondition;
 import dataAccess.entity.LoanType;

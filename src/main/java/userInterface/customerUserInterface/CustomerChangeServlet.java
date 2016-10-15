@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 
-@WebServlet(name = "ChangeCustomerServlet", urlPatterns = {"/ChangeCustomerServlet"})
-public class ChangeCustomerServlet extends HttpServlet {
+@WebServlet(name = "CustomerChangeServlet", urlPatterns = {"/CustomerChangeServlet"})
+public class CustomerChangeServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");

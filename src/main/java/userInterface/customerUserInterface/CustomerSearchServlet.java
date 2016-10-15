@@ -12,8 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
 
-@WebServlet(name = "SearchCustomerServlet", urlPatterns = {"/SearchCustomerServlet"})
-public class SearchCustomerServlet extends HttpServlet {
+@WebServlet(name = "CustomerSearchServlet", urlPatterns = {"/CustomerSearchServlet"})
+public class CustomerSearchServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("UTF-8");

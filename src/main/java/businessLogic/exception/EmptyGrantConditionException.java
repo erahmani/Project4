@@ -1,4 +1,4 @@
-package businessLogic;
+package businessLogic.exception;
 
 /**
  * Created by dotinschool1 on 10/15/2016.

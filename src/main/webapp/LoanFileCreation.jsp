@@ -28,7 +28,7 @@
                             = "333333333333333";
                 }
             }
-            request.open("GET", "/RetrieveCustomerServlet", true);
+            request.open("GET", "/CustomerRetrieveServlet", true);
             request.send();
         }
     </script>

@@ -8,10 +8,10 @@ import org.hibernate.Transaction;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CustomerCRUD extends Main {
+public class CustomerCRUD {
 
     public static int create(String firstName, String lastName, String fatherName, String birthDay, String nationalId) {
-        Session session = SESSION_FACTORY.openSession();
+        Session session = DBUtil.SESSION_FACTORY.openSession();
         Transaction transaction = null;
         Customer customer = new Customer();
         try {
@@ -39,7 +39,7 @@ public class CustomerCRUD extends Main {
     }
 
     public static void delete(Integer id) {
-        Session session = SESSION_FACTORY.openSession();
+        Session session = DBUtil.SESSION_FACTORY.openSession();
         Transaction transaction = null;
         try {
             transaction = session.beginTransaction();
@@ -57,7 +57,7 @@ public class CustomerCRUD extends Main {
     }
 
     public static void update(Integer customerId, String firstName, String lastName, String fatherName, String birthDay, String nationalId) {
-        Session session = SESSION_FACTORY.openSession();
+        Session session = DBUtil.SESSION_FACTORY.openSession();
         Transaction transaction = null;
         try {
             transaction = session.beginTransaction();
@@ -82,7 +82,7 @@ public class CustomerCRUD extends Main {
     public static ArrayList<Customer> selectFirstName(String firstName) {
         List<Customer> customerList = new ArrayList<Customer>();
         System.out.println(1);
-        Session session = SESSION_FACTORY.openSession();
+        Session session = DBUtil.SESSION_FACTORY.openSession();
         Transaction transaction = null;
         try {
             transaction = session.beginTransaction();
@@ -106,7 +106,7 @@ public class CustomerCRUD extends Main {
     public static ArrayList<Customer> selectLastName(String lastName) {
         List<Customer> customerList = new ArrayList<Customer>();
         System.out.println(1);
-        Session session = SESSION_FACTORY.openSession();
+        Session session = DBUtil.SESSION_FACTORY.openSession();
         Transaction transaction = null;
         try {
             transaction = session.beginTransaction();
@@ -130,7 +130,7 @@ public class CustomerCRUD extends Main {
     public static ArrayList<Customer> selectNationalId(String nationalId) {
         List<Customer> customerList = new ArrayList<Customer>();
         System.out.println(1);
-        Session session = SESSION_FACTORY.openSession();
+        Session session = DBUtil.SESSION_FACTORY.openSession();
         Transaction transaction = null;
         try {
             transaction = session.beginTransaction();
@@ -154,7 +154,7 @@ public class CustomerCRUD extends Main {
     public static ArrayList<Customer> searchCustomerId(String customerId) {
         List<Customer> customerList = new ArrayList<Customer>();
         System.out.println(1);
-        Session session = SESSION_FACTORY.openSession();
+        Session session = DBUtil.SESSION_FACTORY.openSession();
         Transaction transaction = null;
         try {
             transaction = session.beginTransaction();
