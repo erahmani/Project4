@@ -35,7 +35,7 @@ public class CustomerSearchServlet extends HttpServlet {
         req.setAttribute("searchOption", searchOption);
         req.setAttribute("searchValue", searchValue);
         req.setAttribute("customerList", customerList);
-        RequestDispatcher requestDispatcher = req.getRequestDispatcher("CustomerSearchResult.jsp");
+        RequestDispatcher requestDispatcher = req.getRequestDispatcher("search_customer_result.jsp");
         requestDispatcher.forward(req, resp);
     }
 }

@@ -41,12 +41,12 @@
     </center>
 </div>
 <div class="home-button">
-    <a href="Main.jsp">
+    <a href="main.jsp">
         <button>خانه</button>
     </a>
 </div>
 <div class="home-button">
-    <a href="SearchCustomer.jsp">
+    <a href="search_customer.jsp">
         <button>قبلی</button>
     </a>
 </div>

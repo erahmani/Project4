@@ -10,23 +10,13 @@ import java.util.List;
 
 public class CustomerCRUD {
 
-    public static int create(String firstName, String lastName, String fatherName, String birthDay, String nationalId) {
+    public static int create(Customer customer) {
         Session session = DBUtil.SESSION_FACTORY.openSession();
         Transaction transaction = null;
-        Customer customer = new Customer();
         try {
             transaction = session.beginTransaction();
-
-            customer.setFirstName(firstName);
-            customer.setLastName(lastName);
-            customer.setFatherName(fatherName);
-            customer.setBirthDay(birthDay);
-            customer.setNationalId(nationalId);
-
             session.save(customer);
             transaction.commit();
-            System.out.println(customer.getCustomerId());
-
         } catch (HibernateException ex) {
             if (transaction != null) {
                 transaction.rollback();
@@ -56,18 +46,18 @@ public class CustomerCRUD {
         }
     }
 
-    public static void update(Integer customerId, String firstName, String lastName, String fatherName, String birthDay, String nationalId) {
+    public static void update(Customer customer) {
         Session session = DBUtil.SESSION_FACTORY.openSession();
         Transaction transaction = null;
         try {
             transaction = session.beginTransaction();
-            Customer customer = (Customer) session.get(Customer.class, customerId);
-            customer.setFirstName(firstName);
-            customer.setLastName(lastName);
-            customer.setFatherName(fatherName);
-            customer.setBirthDay(birthDay);
-            customer.setNationalId(nationalId);
-            session.update(customer);
+            Customer customer_new = (Customer) session.get(Customer.class, customer.getCustomerId());
+            customer_new.setFirstName(customer.getFirstName());
+            customer_new.setLastName(customer.getLastName());
+            customer_new.setFatherName(customer.getFatherName());
+            customer_new.setBirthDay(customer.getBirthDay());
+            customer_new.setNationalId(customer.getNationalId());
+            session.update(customer_new);
             transaction.commit();
         } catch (HibernateException ex) {
             if (transaction != null) {

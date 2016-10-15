@@ -19,10 +19,10 @@ public class CustomerChangeServlet extends HttpServlet {
         if (request.getParameter("Delete") != null) {
             String customerId = request.getParameter("customerId");
             CustomerBusinessLogic.deleteCustomer(Integer.parseInt(customerId));
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("SuccessfulDeletion.jsp");
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("successful_delete.jsp");
             requestDispatcher.forward(request, response);
         } else if (request.getParameter("Edit") != null) {
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("CustomerEdition.jsp");
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("edit_customer.jsp");
             requestDispatcher.forward(request, response);
         }
     }

@@ -6,7 +6,7 @@
     <title>ایجاد نوع تسهیلات</title>
 </head>
 <body>
-<form action="GrantConditionsCreation.jsp">
+<form action="create_grant_condition.jsp">
     نام نوع تسهیلات:
     <input name="name" type="String">
     <br>

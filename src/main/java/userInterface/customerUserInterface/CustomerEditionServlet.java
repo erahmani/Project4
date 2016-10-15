@@ -3,7 +3,8 @@ package userInterface.customerUserInterface;
 import businessLogic.CustomerBusinessLogic;
 import businessLogic.exception.DuplicateUniqueCodeException;
 import businessLogic.exception.EmptyFieldException;
-import businessLogic.exception.InValidNationalId;
+import businessLogic.exception.InValidNationalIdException;
+import dataAccess.entity.Customer;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -21,21 +22,22 @@ public class CustomerEditionServlet extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
         try {
-            CustomerBusinessLogic.editCustomer(Integer.parseInt(request.getParameter("customerId")), request.getParameter("firstName"), request.getParameter("lastName"),
+            Customer customer = new Customer(Integer.parseInt(request.getParameter("customerId")),request.getParameter("firstName"), request.getParameter("lastName"),
                     request.getParameter("fatherName"), request.getParameter("birthDay"), request.getParameter("nationalId"));
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("SuccessfulEdition.jsp");
+            CustomerBusinessLogic.editCustomer(customer);
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("successful_edit.jsp");
             requestDispatcher.forward(request, response);
         } catch (DuplicateUniqueCodeException e) {
             request.setAttribute("errorMessage", e.getMessage());
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("CustomerEdition.jsp");
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("edit_customer.jsp");
             requestDispatcher.forward(request, response);
         }catch (EmptyFieldException e) {
             request.setAttribute("errorMessage", e.getMessage());
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("CustomerEdition.jsp");
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("edit_customer.jsp");
             requestDispatcher.forward(request, response);
-        } catch (InValidNationalId e) {
+        } catch (InValidNationalIdException e) {
             request.setAttribute("errorMessage", e.getMessage());
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("CustomerEdition.jsp");
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("edit_customer.jsp");
             requestDispatcher.forward(request, response);
         }
     }

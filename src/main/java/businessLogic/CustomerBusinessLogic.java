@@ -2,7 +2,8 @@ package businessLogic;
 
 import businessLogic.exception.DuplicateUniqueCodeException;
 import businessLogic.exception.EmptyFieldException;
-import businessLogic.exception.InValidNationalId;
+import businessLogic.exception.InValidCustomerIdException;
+import businessLogic.exception.InValidNationalIdException;
 import dataAccess.CustomerCRUD;
 import dataAccess.entity.Customer;
 
@@ -21,23 +22,23 @@ public class CustomerBusinessLogic {
     @Column(nullable = false)
     private String birthDay;
 
-    private static void realCustomerFieldValidation(String firstName, String lastName, String fatherName, String birthDay, String nationalId) {
-        if (firstName.isEmpty()) {
+    public static void isValidCustomerFields(Customer customer) {
+        if (customer.getFirstName().isEmpty()) {
             throw new EmptyFieldException("First Name Is Empty!");
         }
-        if (lastName.isEmpty()) {
+        if (customer.getLastName().isEmpty()) {
             throw new EmptyFieldException("Last Name Is Empty!");
         }
-        if (fatherName.isEmpty()) {
+        if (customer.getFatherName().isEmpty()) {
             throw new EmptyFieldException("Father Name Is Empty!");
         }
-        if (birthDay.isEmpty()) {
+        if (customer.getBirthDay().isEmpty()) {
             throw new EmptyFieldException("Birth Day Is Empty!");
         }
-        if (nationalId.isEmpty()) {
+        if (customer.getNationalId().isEmpty()) {
             throw new EmptyFieldException("National ID Is Empty!");
-        } else if (!isValidNationalId(nationalId)) {
-            throw new InValidNationalId("National ID Is not Valid");
+        } else if (!isValidNationalId(customer.getNationalId())) {
+            throw new InValidNationalIdException("National ID Is not Valid");
         }
     }
 
@@ -59,18 +60,16 @@ public class CustomerBusinessLogic {
         }
     }
 
+    public static int createCustomer(Customer customer) {
+        isValidCustomerFields(customer);
 
-    public static int createCustomer(String firstName, String lastName, String fatherName, String birthDay, String nationalId) {
-        realCustomerFieldValidation(firstName, lastName, fatherName, birthDay, nationalId);
-
-        ArrayList<dataAccess.entity.Customer> customerList = searchNationalId(nationalId);
+        ArrayList<dataAccess.entity.Customer> customerList = searchNationalId(customer.getNationalId());
         if (customerList.size() == 0) {
-            return CustomerCRUD.create(firstName, lastName, fatherName, birthDay, nationalId);
+            return CustomerCRUD.create(customer);
         } else {
             throw new DuplicateUniqueCodeException("This National Is Inserted !!!");
         }
     }
-
 
     public static ArrayList<Customer> searchFirstName(String firstName) {
         return CustomerCRUD.selectFirstName(firstName);
@@ -85,24 +84,25 @@ public class CustomerBusinessLogic {
     }
 
     public static ArrayList<Customer> searchCustomerId(String customerId) {
-        return CustomerCRUD.searchCustomerId(customerId);
+        ArrayList<Customer> customerList = CustomerCRUD.searchCustomerId(customerId);
+        if (customerList.size() == 0) {
+            throw new InValidCustomerIdException("Customer Id Is Invalid");
+        }
+        return customerList;
     }
 
-
-    public static void editCustomer(Integer customerId, String firstName, String lastName, String fatherName, String birthDay, String nationalId) {
-        realCustomerFieldValidation(firstName, lastName, fatherName, birthDay, nationalId);
-        ArrayList<dataAccess.entity.Customer> customerList = searchNationalId(nationalId);
-        if (customerList.size() == 0 || (customerList.size() == 1 && customerList.get(0).getCustomerId().equals(customerId))) {
-            CustomerCRUD.update(customerId, firstName, lastName, fatherName, birthDay, nationalId);
+    public static void editCustomer(Customer customer) {
+        isValidCustomerFields(customer);
+        ArrayList<dataAccess.entity.Customer> customerList = searchNationalId(customer.getNationalId());
+        if (customerList.size() == 0 || (customerList.size() == 1 && customerList.get(0).getCustomerId().equals(customer.getCustomerId()))) {
+            CustomerCRUD.update(customer);
         } else {
             throw new DuplicateUniqueCodeException("National Id Is Inserted !!!");
         }
     }
 
-
     public static void deleteCustomer(Integer customerId) {
         CustomerCRUD.delete(customerId);
     }
-
 
 }

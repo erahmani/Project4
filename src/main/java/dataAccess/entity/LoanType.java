@@ -20,19 +20,11 @@ public class LoanType {
     private String interestRate;
 
     @Column(nullable = false)
-    @OneToMany(mappedBy = "loanType", cascade = CascadeType.REMOVE )
+    @OneToMany(cascade = CascadeType.REMOVE )
     private List<GrantCondition> grantConditionList = new ArrayList<GrantCondition>();
-
-    public List<GrantCondition> getGrantConditionList() {
-        return grantConditionList;
-    }
 
     public void setGrantConditionList(List<GrantCondition> grantConditionList) {
         this.grantConditionList = grantConditionList;
-    }
-
-    public void setInterestRate(String interestRate) {
-        this.interestRate = interestRate;
     }
 
     public void setName(String name) {
@@ -55,6 +47,9 @@ public class LoanType {
         return interestRate;
     }
 
+    public void setInterestRate(String interestRate) {
+        this.interestRate = interestRate;
+    }
     @Override
     public String toString() {
         return "Name: " + name + "Interest Rate: " + interestRate;

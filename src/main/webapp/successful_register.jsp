@@ -8,7 +8,7 @@
 <p ><font color="green"><h2 >Successful registration, customer Id is <%=request.getAttribute("customerId")%> </h2></font></p>
 </body>
 <div class="home-button">
-<a href="Main.jsp">
+<a href="main.jsp">
 <button>خانه</button>
 </a>
 </div>

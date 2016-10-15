@@ -25,6 +25,25 @@ public class Customer {
     @Column(nullable = false)
     private String nationalId;
 
+    public Customer() {
+    }
+
+    public Customer(Integer customerId, String firstName, String lastName, String fatherName, String birthDay, String nationalId) {
+        this.customerId = customerId;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.fatherName = fatherName;
+        this.birthDay = birthDay;
+        this.nationalId = nationalId;
+    }
+
+    public Customer(String firstName, String lastName, String fatherName, String birthDay, String nationalId) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.fatherName = fatherName;
+        this.birthDay = birthDay;
+        this.nationalId = nationalId;
+    }
     public void setCustomerId(Integer customerId) {
         this.customerId = customerId;
     }

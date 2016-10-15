@@ -3,7 +3,8 @@ package userInterface.customerUserInterface;
 import businessLogic.CustomerBusinessLogic;
 import businessLogic.exception.DuplicateUniqueCodeException;
 import businessLogic.exception.EmptyFieldException;
-import businessLogic.exception.InValidNationalId;
+import businessLogic.exception.InValidNationalIdException;
+import dataAccess.entity.Customer;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -19,22 +20,23 @@ public class CustomerRegistrationServlet extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
         try {
-            int customerId = CustomerBusinessLogic.createCustomer(request.getParameter("firstName"), request.getParameter("lastName"),
-                    request.getParameter("fatherName"), request.getParameter("birthDay"), request.getParameter("nationalId"));
+            Customer customer = new Customer(request.getParameter("firstName"), request.getParameter("lastName"), request.getParameter("fatherName"),
+                    request.getParameter("birthDay"), request.getParameter("nationalId"));
+            int customerId = CustomerBusinessLogic.createCustomer(customer);
             request.setAttribute("customerId", customerId);
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("SuccessfulRegistration.jsp");
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("successful_register.jsp");
             requestDispatcher.forward(request, response);
         } catch (DuplicateUniqueCodeException e) {
             request.setAttribute("errorMessage", e.getMessage());
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("CustomerRegistration.jsp");
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("register_customer.jsp");
             requestDispatcher.forward(request, response);
         } catch (EmptyFieldException e) {
             request.setAttribute("errorMessage", e.getMessage());
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("CustomerRegistration.jsp");
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("register_customer.jsp");
             requestDispatcher.forward(request, response);
-        } catch (InValidNationalId e) {
+        } catch (InValidNationalIdException e) {
             request.setAttribute("errorMessage", e.getMessage());
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("CustomerRegistration.jsp");
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("register_customer.jsp");
             requestDispatcher.forward(request, response);
         }
     }

@@ -96,7 +96,7 @@
     </center>
 </div>
 <div class="home-button">
-    <a href="Main.jsp">
+    <a href="main.jsp">
         <button>خانه</button>
     </a>
 </div>

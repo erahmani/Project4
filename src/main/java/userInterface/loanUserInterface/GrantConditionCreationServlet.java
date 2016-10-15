@@ -12,8 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.LinkedList;
 
-@WebServlet(name = "CreateGrantConditionServlet", urlPatterns = {"/CreateGrantConditionServlet"})
-public class CreateGrantConditionServlet extends HttpServlet {
+@WebServlet(name = "GrantConditionCreationServlet", urlPatterns = {"/GrantConditionCreationServlet"})
+public class GrantConditionCreationServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setCharacterEncoding("UTF-8");

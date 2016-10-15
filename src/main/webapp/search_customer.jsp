@@ -10,7 +10,7 @@
 <div class="relative">
     <br>
     <center>
-        <form action="SearchCustomerServlet" method="GET">
+        <form action="CustomerSearchServlet" method="GET">
             <select name="searchOption">
                 <option name="firstName" value="firstName">نام</option>
                 <option name="lastName" value="lastName">نام خانوادگی</option>
@@ -24,7 +24,7 @@
     </center>
 </div>
 <div class="home-button">
-    <a href="Main.jsp">
+    <a href="main.jsp">
         <button>خانه</button>
     </a>
 </div>

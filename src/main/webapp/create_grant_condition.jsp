@@ -13,8 +13,8 @@
 
         function addGrantCondition() {
            // if (document.getElementById("submit").disabled == true) {
-                document.getElementById('grantConditionForm').disabled == false;
-        //    }
+                document.getElementById('submit').disabled == false;
+           //   }
 
             var table = document.getElementById("grantConditionsTable");
             var row = table.insertRow(table.length);
@@ -60,7 +60,7 @@ Contract Maximum Cost:
 
 <input type="button" value="تعریف" onclick="return addGrantCondition()">
 
-<form id="grantConditionForm" action="CreateGrantConditionServlet">
+<form action="CreateGrantConditionServlet" method = "post">
     <table id="grantConditionsTable">
         <tr>
             <th>نام</th>
@@ -70,7 +70,8 @@ Contract Maximum Cost:
             <th>حداکثر مبلغ قرارداد</th>
         </tr>
     </table>
-    <input type="submit" id="submit" value="ثبت" disabled="true">
+    <input type="submit" id="submit" value="ثبت">
 </form>
+
 </body>
 </html>
