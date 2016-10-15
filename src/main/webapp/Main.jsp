@@ -10,14 +10,14 @@
 <ul class="makeMenu">
     <li> مشتری
         <ul>
-            <li><a href="CustomerRegistration.jsp">ثبت نام مشتری </a></li>
-            <li><a href="SearchCustomer.jsp">جستجوی مشتری</a></li>
+            <li><a href="register_customer.jsp">ثبت نام مشتری </a></li>
+            <li><a href="search_customer.jsp">جستجوی مشتری</a></li>
         </ul>
     </li>
     <li> تسهیلات
         <ul>
-            <li><a href="LoanFileCreation.jsp">ایجاد پرونده ی تسهیلاتی</a></li>
-            <li><a href="LoanTypeCreation.jsp">ایجاد نوع تسهیلات</a></li>
+            <li><a href="LoanFileCreationServlet">ایجاد پرونده ی تسهیلاتی</a></li>
+            <li><a href="create_loan_type.jsp">ایجاد نوع تسهیلات</a></li>
         </ul>
     </li>
 </ul>
