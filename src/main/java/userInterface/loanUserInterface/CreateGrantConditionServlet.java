@@ -1,6 +1,6 @@
 package userInterface.loanUserInterface;
 
-import dataAccess.GrantConditionCRUD;
+import businessLogic.LoanTypeBusinessLogic;
 import dataAccess.entity.GrantCondition;
 import dataAccess.entity.LoanType;
 
@@ -10,18 +10,33 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.LinkedList;
 
 @WebServlet(name = "CreateGrantConditionServlet", urlPatterns = {"/CreateGrantConditionServlet"})
 public class CreateGrantConditionServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        LoanType loanType = (LoanType) request.getSession().getAttribute("loanType");
-        GrantCondition grantCondition = (GrantCondition) request.getSession().getAttribute("grantCondition");
-
-        System.out.println("hkashdfkahsdfkhaksdfhk " + loanType);
-        System.out.println("hkashdfkahsdfkhaksdfhk " + grantCondition);
-
         response.setCharacterEncoding("UTF-8");
-        //  response.getWriter().print(html);
+        request.setCharacterEncoding("UTF-8");
+
+        LoanType loanType = (LoanType) request.getSession().getAttribute("loanType");
+        LinkedList<GrantCondition> grantConditionList = prepareGrantConditionsList(request);
+        LoanTypeBusinessLogic.createCustomer(loanType, grantConditionList);
+    }
+
+    private LinkedList<GrantCondition> prepareGrantConditionsList(HttpServletRequest request) {
+        String[] nameList = request.getParameterValues("name");
+        String[] minDurationList = request.getParameterValues("minDuration");
+        String[] maxDurationList = request.getParameterValues("maxDuration");
+        String[] minCostList = request.getParameterValues("minCost");
+        String[] maxCostList = request.getParameterValues("maxCost");
+
+        LinkedList<GrantCondition> grantConditionList = new LinkedList<GrantCondition>();
+        for (int i = 0; i < nameList.length; i++) {
+            GrantCondition grantCondition = new GrantCondition(nameList[i], minDurationList[i],
+                    maxDurationList[i], minCostList[i], maxCostList[i]);
+            grantConditionList.add(grantCondition);
+        }
+        return grantConditionList;
     }
 }

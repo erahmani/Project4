@@ -59,6 +59,7 @@ public class CustomerBusinessLogic {
         }
     }
 
+
     public static int createCustomer(String firstName, String lastName, String fatherName, String birthDay, String nationalId) {
         realCustomerFieldValidation(firstName, lastName, fatherName, birthDay, nationalId);
 
@@ -70,12 +71,13 @@ public class CustomerBusinessLogic {
         }
     }
 
-    public static ArrayList<Customer> selectFirstName(String firstName) {
+
+    public static ArrayList<Customer> searchFirstName(String firstName) {
         return CustomerCRUD.selectFirstName(firstName);
     }
 
     public static ArrayList<Customer> searchLastName(String lastName) {
-        return CustomerCRUD.searchLastName(lastName);
+        return CustomerCRUD.selectLastName(lastName);
     }
 
     public static ArrayList<Customer> searchNationalId(String nationalId) {
@@ -86,6 +88,7 @@ public class CustomerBusinessLogic {
         return CustomerCRUD.searchCustomerId(customerId);
     }
 
+
     public static void editCustomer(Integer customerId, String firstName, String lastName, String fatherName, String birthDay, String nationalId) {
         realCustomerFieldValidation(firstName, lastName, fatherName, birthDay, nationalId);
         ArrayList<dataAccess.entity.Customer> customerList = searchNationalId(nationalId);
@@ -95,6 +98,7 @@ public class CustomerBusinessLogic {
             throw new DuplicateUniqueCodeException("National Id Is Inserted !!!");
         }
     }
+
 
     public static void deleteCustomer(Integer customerId) {
         CustomerCRUD.delete(customerId);

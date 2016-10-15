@@ -22,7 +22,7 @@ public class SearchCustomerServlet extends HttpServlet {
         String searchValue = req.getParameter("searchValue");
         ArrayList<Customer> customerList = null;
         if (searchOption.equals("firstName")) {
-            customerList = CustomerBusinessLogic.selectFirstName(searchValue);
+            customerList = CustomerBusinessLogic.searchFirstName(searchValue);
         } else if (searchOption.equals("lastName")) {
             customerList = CustomerBusinessLogic.searchLastName(searchValue);
         } else if (searchOption.equals("customerId")) {

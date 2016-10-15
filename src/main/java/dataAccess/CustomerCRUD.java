@@ -103,7 +103,7 @@ public class CustomerCRUD extends Main {
         return (ArrayList<Customer>) customerList;
     }
 
-    public static ArrayList<Customer> searchLastName(String lastName) {
+    public static ArrayList<Customer> selectLastName(String lastName) {
         List<Customer> customerList = new ArrayList<Customer>();
         System.out.println(1);
         Session session = SESSION_FACTORY.openSession();

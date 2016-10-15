@@ -31,8 +31,7 @@ public class GrantCondition{
     public GrantCondition() {
     }
 
-    public GrantCondition(Integer id, String name, String minDuration, String maxDuration, String minCost, String maxCost) {
-        this.id = id;
+    public GrantCondition(String name, String minDuration, String maxDuration, String minCost, String maxCost) {
         this.name = name;
         this.minDuration = minDuration;
         this.maxDuration = maxDuration;

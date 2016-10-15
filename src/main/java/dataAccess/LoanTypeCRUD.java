@@ -1,26 +1,28 @@
 package dataAccess;
 
+import dataAccess.entity.GrantCondition;
 import dataAccess.entity.LoanType;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
+import java.util.LinkedList;
 import java.util.List;
 
-public class LoanTypeCRUD extends Main{
+public class LoanTypeCRUD extends Main {
 
-    public static LoanType create(String name, String interestRate) {
-        LoanType loanType = new LoanType();
+    public static void create(LoanType loanType, LinkedList<GrantCondition> grantConditionList) {
         Session session = SESSION_FACTORY.openSession();
         Transaction transaction = null;
         try {
             transaction = session.beginTransaction();
-
-            loanType.setName(name);
-            loanType.setInterestRate(interestRate);
             session.save(loanType);
-
+            loanType.setGrantConditionList(grantConditionList);
+            for (GrantCondition grantCondition: grantConditionList) {
+                grantCondition.setLoanType(loanType);
+                session.save(grantCondition);
+            }
             transaction.commit();
         } catch (HibernateException ex) {
             if (transaction != null) {
@@ -29,7 +31,6 @@ public class LoanTypeCRUD extends Main{
             ex.printStackTrace();
         } finally {
             session.close();
-            return loanType;
         }
     }
 

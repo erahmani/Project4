@@ -10,129 +10,67 @@
     <title>ایجاد شرایط اعطا</title>
 
     <script>
-        function showFields() {
-            var xRequest1;
-            if (window.XMLHttpRequest) {
-                xRequest1 = new XMLHttpRequest();
-            } else {
-                xRequest1 = new ActiveXObject("Microsoft.XMLHTTP");
-            }
 
-            xRequest1.onreadystatechange = function () {
-                if ((xRequest1.readyState == 4) && (xRequest1.status == 200)) {
-                    document.getElementById("Show_update").innerHTML
-                            = xRequest1.responseText;
-                }
-            }
-            xRequest1.open("GET", "/SearchGrantConditionServlet", true);
-            xRequest1.send();
-        }
-        function enableRecord() {
-            //document.getElementById("record").disabled = false;
-              showFields();
-            addGrantConditionsList();
-            addRow("grantConditionsTable");
-            return false;
+        function addGrantCondition() {
+           // if (document.getElementById("submit").disabled == true) {
+                document.getElementById('grantConditionForm').disabled == false;
+        //    }
+
+            var table = document.getElementById("grantConditionsTable");
+            var row = table.insertRow(table.length);
+
+            var cel1 = row.insertCell(0);
+            cel1.appendChild(getElement(document.getElementById("name").value, "name", "text"));
+            var cel2 = row.insertCell(1);
+            cel2.appendChild(getElement(document.getElementById("minDuration").value, "minDuration", "number"));
+            var cel3 = row.insertCell(2);
+            cel3.appendChild(getElement(document.getElementById("maxDuration").value, "maxDuration", "number"));
+            var cel4 = row.insertCell(3);
+            cel4.appendChild(getElement(document.getElementById("minCost").value, "minCost", "number"));
+            var cel5 = row.insertCell(4);
+            cel5.appendChild(getElement(document.getElementById("maxCost").value, "maxCost", "number"));
         }
 
-        function addGrantConditionsList(name) {
-           /* <%
-        /*    GrantCondition grantCondition = new GrantCondition();
-            grantCondition.setName(request.getParameter("name"));
-            grantCondition.setMinDuration(request.getParameter("minDuration"));
-            grantCondition.setMaxDuration(request.getParameter("maxDuration"));
-            grantCondition.setMinCost(request.getParameter("minCost"));
-            grantCondition.setMaxCost(request.getParameter("maxCost"));
-          //  grantConditionList.add(grantCondition);
-            System.out.println("in jsp");
-            System.out.println(grantCondition);
-         //   session.setAttribute("grantCondition",grantConditionList);*/
-            %>*/
-        }
-
-        function getInput(value, name, type, readOnly) {
+        function getElement(value, name, type) {
             var element = document.createElement("input");
             element.value = value;
             element.name = name;
             element.type = type;
-            element.readOnly = readOnly;
+            element.readOnly = true;
             return element;
         }
-        function addRow(tableID) {
-            var table = document.getElementById(tableID);
-
-            var rowCount = table.rows.length;
-            var row = table.insertRow(rowCount);
-
-            var cell = row.insertCell(0);
-            var form = document.createElement("form");
-            form.action = "GrantCondition2.jsp";
-
-            var name = getInput(document.getElementById("name").value, "name", "text", "true");
-            form.appendChild(name);
-            var minDuration = getInput(document.getElementById("minDuration").value, "minDuration", "number", "true");
-            form.appendChild(minDuration);
-            var maxDuration = getInput(document.getElementById("maxDuration").value, "maxDuration", "number", "true");
-            form.appendChild(maxDuration);
-            var minCost = getInput(document.getElementById("minCost").value, "minCost", "number", "true");
-            form.appendChild(minCost);
-            var maxCost = getInput(document.getElementById("maxCost").value, "maxCost", "number", "true");
-            form.appendChild(maxCost);
-
-            var submit = document.createElement("input");
-            submit.value = "ثبت";
-            submit.id = "record";
-            submit.type = "submit";
-            // submit.disabled = true;
-            form.appendChild(submit);
-
-            cell.appendChild(form);
-
-        }
-
     </script>
 </head>
 <body>
 
-<%--<jsp:useBean id="loanTypeList" type="java.util.List<dataAccess.entity.LoanType>"
-             scope="session"></jsp:useBean>--%>
-
 Grant Name:
-<br>
-<input type="String" name="name" id="name">
-<br>
+<br><input type="text" id="name"><br>
 
 Contract Minimum Duration:
-<br>
-<input type="number" name="minDuration" id="minDuration">
-<br>
+<br><input type="number" id="minDuration"><br>
 
 Contract Maximum Duration:
-<br>
-<input type="number" name="maxDuration" id="maxDuration">
-<br>
+<br><input type="number" id="maxDuration"><br>
 
 Contract Minimum Cost:
-<br>
-<input type="number" name="minCost" id="minCost">
-<br>
+<br><input type="number" id="minCost"><br>
 
 Contract Maximum Cost:
-<br>
-<input type="number" name="maxCost" id="maxCost">
-<br>
+<br><input type="number" id="maxCost"><br>
 
-<input type="button" value="تعریف" onclick="return enableRecord()">
+<input type="button" value="تعریف" onclick="return addGrantCondition()">
 
-<div id="Show_update">
-    gsdghsfghsfghdfgh
-</div>
-
-<table id="grantConditionsTable">
-    <tr>
-        <td>fghdfgh</td>
-    </tr>
-</table>
-
+<form id="grantConditionForm" action="CreateGrantConditionServlet">
+    <table id="grantConditionsTable">
+        <tr>
+            <th>نام</th>
+            <th>حداقل مدت قرارداد</th>
+            <th>حداکثر مدت قرارداد</th>
+            <th>حداقل مبلغ قرارداد</th>
+            <th>حداکثر مبلغ قرارداد</th>
+        </tr>
+    </table>
+    <input type="submit" id="submit" value="ثبت" disabled="true">
+</form>
 </body>
 </html>
