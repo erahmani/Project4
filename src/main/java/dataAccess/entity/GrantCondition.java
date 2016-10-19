@@ -1,6 +1,7 @@
 package dataAccess.entity;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 
 @Entity
 @Table
@@ -14,21 +15,18 @@ public class GrantCondition{
     private String name;
 
     @Column(nullable = false)
-    private String minDuration;
+    private Short minDuration;
 
     @Column(nullable = false)
-    private String maxDuration;
+    private Short maxDuration;
 
     @Column(nullable = false)
-    private String minCost;
+    private BigDecimal minCost;
 
     @Column(nullable = false)
-    private String maxCost;
+    private BigDecimal maxCost;
 
-    public GrantCondition() {
-    }
-
-    public GrantCondition(String name, String minDuration, String maxDuration, String minCost, String maxCost) {
+    public GrantCondition(String name, Short minDuration, Short maxDuration, BigDecimal minCost, BigDecimal maxCost) {
         this.name = name;
         this.minDuration = minDuration;
         this.maxDuration = maxDuration;
@@ -36,9 +34,31 @@ public class GrantCondition{
         this.maxCost = maxCost;
     }
 
+    public GrantCondition() {
+    }
 
     @Override
     public String toString() {
         return "name: " + name + " minDuration: " + minDuration + " maxDuration: " + maxDuration + " minCost: " + minCost + " maxCost: " + maxCost + "\n";
+    }
+
+    public BigDecimal getMinCost() {
+        return minCost;
+    }
+
+    public BigDecimal getMaxCost() {
+        return maxCost;
+    }
+
+    public Short getMinDuration() {
+        return minDuration;
+    }
+
+    public Short getMaxDuration() {
+        return maxDuration;
+    }
+
+    public String getName() {
+        return name;
     }
 }

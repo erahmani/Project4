@@ -2,27 +2,21 @@ package dataAccess;
 
 import dataAccess.entity.GrantCondition;
 import dataAccess.entity.LoanType;
-import org.hibernate.HibernateError;
-import org.hibernate.HibernateException;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
+import org.hibernate.*;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 public class LoanTypeCRUD {
 
-    public static void create(LoanType loanType, LinkedList<GrantCondition> grantConditionList) {
+    public static void create(LoanType loanType, List<GrantCondition> grantConditionList) {
         Session session = DBUtil.SESSION_FACTORY.openSession();
         Transaction transaction = null;
         try {
             transaction = session.beginTransaction();
-            System.out.println(loanType);
             session.save(loanType);
             loanType.setGrantConditionList(grantConditionList);
             for (GrantCondition grantCondition : grantConditionList) {
-                System.out.println(grantCondition);
                 session.save(grantCondition);
             }
             transaction.commit();
@@ -36,13 +30,15 @@ public class LoanTypeCRUD {
         }
     }
 
-    public static List<LoanType> searchAll() {
+    public static List<LoanType> read(Integer loanTypeId) {
         Session session = DBUtil.SESSION_FACTORY.openSession();
         Transaction transaction = null;
         List<LoanType> loanTypeList = new ArrayList<LoanType>();
         try {
             transaction = session.beginTransaction();
-            loanTypeList = session.createQuery("From LoanType").list();
+            Query query = session.createQuery("FROM LoanType Where :id is null or id = :id ");
+            query.setParameter("id", loanTypeId);
+            loanTypeList = query.list();
             transaction.commit();
         } catch (HibernateError e) {
             if (transaction != null) {

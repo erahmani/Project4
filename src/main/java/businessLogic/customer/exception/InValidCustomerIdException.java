@@ -1,4 +1,4 @@
-package businessLogic.exception;
+package businessLogic.customer.exception;
 
 /**
  * Created by dotinschool1 on 10/15/2016.

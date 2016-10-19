@@ -1,6 +1,6 @@
 package userInterface.customerUserInterface;
 
-import businessLogic.CustomerBusinessLogic;
+import businessLogic.customer.CustomerBusinessLogic;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -18,11 +18,11 @@ public class CustomerChangeServlet extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
         if (request.getParameter("Delete") != null) {
             String customerId = request.getParameter("customerId");
-            CustomerBusinessLogic.deleteCustomer(Integer.parseInt(customerId));
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("successful_delete.jsp");
+            CustomerBusinessLogic.delete(Integer.parseInt(customerId));
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("customerJsp/successful_delete_customer.jsp");
             requestDispatcher.forward(request, response);
         } else if (request.getParameter("Edit") != null) {
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("edit_customer.jsp");
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("customerJsp/edit_customer.jsp");
             requestDispatcher.forward(request, response);
         }
     }

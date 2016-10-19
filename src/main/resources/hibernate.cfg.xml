@@ -16,6 +16,7 @@
         <mapping class="dataAccess.entity.GrantCondition"></mapping>
         <mapping class="dataAccess.entity.LoanType"></mapping>
         <mapping class="dataAccess.entity.Customer"></mapping>
+        <mapping class="dataAccess.entity.LoanFile"></mapping>
     </session-factory>
 
 </hibernate-configuration>

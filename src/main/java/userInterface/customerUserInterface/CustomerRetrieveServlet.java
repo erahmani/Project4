@@ -1,6 +1,7 @@
 package userInterface.customerUserInterface;
 
-import businessLogic.CustomerBusinessLogic;
+import businessLogic.customer.CustomerBusinessLogic;
+import businessLogic.customer.exception.InValidCustomerIdException;
 import dataAccess.entity.Customer;
 import org.json.simple.JSONObject;
 
@@ -14,21 +15,21 @@ import java.util.List;
 
 @WebServlet(name = "CustomerRetrieveServlet", urlPatterns = {"/CustomerRetrieveServlet"})
 public class CustomerRetrieveServlet extends HttpServlet {
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
-        String customerId = (String) request.getParameter("customerId");
-
-        System.out.println("****** " + customerId);
-        List<Customer> customer = CustomerBusinessLogic.searchCustomerId(customerId);
-
-        System.out.println("****** " + customerId + " " + customer.get(0).getFirstName() + " " + customer.get(0).getLastName());
         JSONObject jsonCustomer = new JSONObject();
-        jsonCustomer.put("firstName", customer.get(0).getFirstName());
-        jsonCustomer.put("lastName", customer.get(0).getLastName());
-
-        response.setContentType("application/json");
-        response.getWriter().print(jsonCustomer);
-
+        try {
+            String customerId = request.getParameter("customerId");
+            List<Customer> customer = CustomerBusinessLogic.retrieveInfo(Integer.parseInt(customerId));
+            jsonCustomer.put("firstName", customer.get(0).getFirstName());
+            jsonCustomer.put("lastName", customer.get(0).getLastName());
+            response.setContentType("application/json");
+            response.getWriter().print(jsonCustomer);
+        } catch (InValidCustomerIdException e) {
+            jsonCustomer.put("address", "/LoanFilePageCreationServlet?errorMessage=" + e.getMessage());
+            response.setContentType("application/json");
+            response.getWriter().print(jsonCustomer);
+        }
     }
 }

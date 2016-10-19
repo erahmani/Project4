@@ -1,48 +1,40 @@
 package dataAccess.entity;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 
 @Entity
-@Table
+@Table(name = "LoanFile")
 public class LoanFile {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(unique = true)
     private Integer id;
 
-    @ManyToOne
     @Column(nullable = false)
+    private BigDecimal cost;
+
+    @Column(nullable = false)
+    private Short duration;
+
+    @ManyToOne(fetch = FetchType.EAGER)
     private Customer customer;
 
-    @ManyToOne
-    @Column(nullable = false)
+    @ManyToOne(fetch = FetchType.EAGER)
     private LoanType loanType;
 
-    public LoanFile(Customer customer, LoanType loanType) {
+    public LoanFile(Customer customer, LoanType loanType, BigDecimal cost, Short duration) {
         this.customer = customer;
         this.loanType = loanType;
+        this.cost = cost;
+        this.duration = duration;
     }
 
-    public Integer getId() {
-        return id;
+    public LoanFile() {
     }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public Customer getCustomer() {
-        return customer;
-    }
-
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
-    }
-
-    public LoanType getLoanType() {
-        return loanType;
-    }
-
-    public void setLoanType(LoanType loanType) {
-        this.loanType = loanType;
+    @Override
+    public String toString() {
+        return "Customer: " + customer + "\nloanType: " + loanType;
     }
 }

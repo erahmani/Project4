@@ -3,24 +3,47 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <%@ page contentType="text/html; charset=UTF-8" %>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>ثبت نام مشتری</title>
+    <link rel="stylesheet" type="text/css" href="/css/form-style.css">
+    <link rel="stylesheet" type="text/css" href="/css/menu-style.css">
+    <script>
+        function invalidateSession() {
+            <%session.invalidate();%>
+        }
+    </script>
 </head>
 
-<body>
-<ul class="makeMenu">
-    <li> مشتری
-        <ul>
-            <li><a href="register_customer.jsp">ثبت نام مشتری </a></li>
-            <li><a href="search_customer.jsp">جستجوی مشتری</a></li>
-        </ul>
-    </li>
-    <li> تسهیلات
-        <ul>
-            <li><a href="LoanFileCreationServlet">ایجاد پرونده ی تسهیلاتی</a></li>
-            <li><a href="create_loan_type.jsp">ایجاد نوع تسهیلات</a></li>
-        </ul>
-    </li>
-</ul>
+<body onload="invalidateSession()" dir="rtl">
+<div class="block">
+    <div class="bar">
+        <div class="menuPosition">
+            <ul class="makeMenu">
+                <li><a href="/main.jsp"> خانه </a></li>
+            </ul>
+        </div>
+        <div class="menuPosition">
+            <ul class="makeMenu">
+                <li> مشتری
+                    <ul>
+                        <li><a href="/customerJsp/register_customer.jsp">ثبت نام مشتری </a></li>
+                        <li><a href="/customerJsp/search_customer.jsp">جستجوی مشتری</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div class="menuPosition">
+            <ul class="makeMenu">
+                <li> تسهیلات
+                    <ul>
+                        <li><a href="/loanTypeJsp/create_loan_type.jsp">ایجاد نوع تسهیلات </a></li>
+                        <li><a href="/loanFileJsp/create_loan_file.jsp">ایجاد پرونده ی تسهیلاتی</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
 </body>
+
 </html>
 
