@@ -2,9 +2,10 @@ package businessLogic.loan;
 
 import businessLogic.loan.exception.InValidGrantConditionFieldException;
 import dataAccess.entity.GrantCondition;
+import log4j.Log;
 
-public class GrantConditionBusinessLogic {
-    public static void validateFields(GrantCondition grantCondition) {
+class GrantConditionBusinessLogic {
+    static void validateFields(GrantCondition grantCondition) {
         String errorMessage = "";
         boolean inValidField = false;
 
@@ -33,6 +34,7 @@ public class GrantConditionBusinessLogic {
         }
 
         if(inValidField){
+            Log.log.error(errorMessage + "مشکل در ایجاد شرط اعطا:");
             throw new InValidGrantConditionFieldException(errorMessage);
         }
     }
