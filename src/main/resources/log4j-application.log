@@ -1,0 +1,2 @@
+2016-10-22 08:41:27 DEBUG log4j.Log:12 - Hello this is a debug message
+2016-10-22 08:41:27 INFO  log4j.Log:13 - Hello this is an info message

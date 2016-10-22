@@ -1,0 +1,19 @@
+div.loanBlock {
+    position: relative;
+    margin: 0% 5% ;
+    width: 90%;
+    height: 90%;
+    background-color: #6090aa;
+}
+
+div.tableBlock{
+    position: relative;
+    width: 90%;
+    height: 20%;
+    background-color: darkolivegreen;
+    margin: 1% 5% 0%;
+}
+
+.tableCol{
+    width:90%;
+}
