@@ -63,8 +63,9 @@ div.bar {
 }
 
 div.block {
+    position: relative;
     margin: 5% 25% 0% 25%;
     width: 50%;
-    height: 50%;
+    height: 60%;
     background-color: gainsboro;
 }

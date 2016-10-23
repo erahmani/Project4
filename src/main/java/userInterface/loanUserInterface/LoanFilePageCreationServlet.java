@@ -24,6 +24,7 @@ public class LoanFilePageCreationServlet extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
         request.setCharacterEncoding("UTF-8");
         List<LoanType> loanTypeList = LoanTypeBusinessLogic.read();
+        System.out.println(loanTypeList);
         request.setAttribute("loanTypeList", loanTypeList);
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("loanFileJsp/create_loan_file.jsp");
         requestDispatcher.forward(request, response);

@@ -26,7 +26,7 @@
                 <li> تسهیلات
                     <ul>
                         <li><a href="/loanTypeJsp/create_loan_type.jsp">ایجاد نوع تسهیلات </a></li>
-                        <li><a href="/loanFileJsp/create_loan_file.jsp">ایجاد پرونده تسهیلاتی</a></li>
+                        <li><a href="/LoanFilePageCreationServlet">ایجاد پرونده ی تسهیلاتی</a></li>
                     </ul>
                 </li>
             </ul>
@@ -39,7 +39,7 @@
                     <label> نام نوع تسهیلات:</label>
                 </div>
                 <div class="fieldInput">
-                    <input name="name" type="text">
+                    <input name="name" type="text" required>
                 </div>
             </div>
             <div class="field">
@@ -47,7 +47,7 @@
                     <label> نرخ سود:</label>
                 </div>
                 <div class="fieldInput">
-                    <input name="interestRate" type="number" max="100">
+                    <input name="interestRate" type="number" max="100" required>
                 </div>
             </div>
             <center>

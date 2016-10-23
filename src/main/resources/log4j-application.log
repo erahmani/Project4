@@ -1,2 +1,218 @@
-2016-10-22 08:41:27 DEBUG log4j.Log:12 - Hello this is a debug message
-2016-10-22 08:41:27 INFO  log4j.Log:13 - Hello this is an info message
+﻿2016-10-23 14:05:36 ERROR Log:38 - مشکل در ایجاد نوع تسهیلات: حداقل باید یک شرط اعطا برای تسهیلات مورد نظر تعریف شود.
+2016-10-23 14:05:40 ERROR Log:38 - مشکل در ایجاد نوع تسهیلات: حداقل باید یک شرط اعطا برای تسهیلات مورد نظر تعریف شود.
+2016-10-23 14:05:42 ERROR Log:38 - مشکل در ایجاد نوع تسهیلات: حداقل باید یک شرط اعطا برای تسهیلات مورد نظر تعریف شود.
+2016-10-23 14:07:45 INFO  Log:17 - ایجاد نوع تسهیلات جدید به نام نوع جدید
+2016-10-23 14:08:03 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {4.0.5.Final}
+2016-10-23 14:08:03 INFO  Version:54 - HHH000412: Hibernate Core {4.3.10.Final}
+2016-10-23 14:08:03 INFO  Environment:239 - HHH000206: hibernate.properties not found
+2016-10-23 14:08:03 INFO  Environment:346 - HHH000021: Bytecode provider name : javassist
+2016-10-23 14:08:06 INFO  Configuration:2075 - HHH000043: Configuring from resource: /hibernate.cfg.xml
+2016-10-23 14:08:06 INFO  Configuration:2094 - HHH000040: Configuration resource: /hibernate.cfg.xml
+2016-10-23 14:08:06 WARN  DTDEntityResolver:75 - HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+2016-10-23 14:08:08 INFO  Configuration:2216 - HHH000041: Configured SessionFactory: null
+2016-10-23 14:08:28 WARN  DriverManagerConnectionProviderImpl:93 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+2016-10-23 14:08:28 INFO  DriverManagerConnectionProviderImpl:166 - HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/bank?useUnicode=true&characterEncoding=utf-8]
+2016-10-23 14:08:28 INFO  DriverManagerConnectionProviderImpl:175 - HHH000046: Connection properties: {user=root, password=****}
+2016-10-23 14:08:28 INFO  DriverManagerConnectionProviderImpl:180 - HHH000006: Autocommit mode: false
+2016-10-23 14:08:29 INFO  DriverManagerConnectionProviderImpl:102 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2016-10-23 14:08:35 INFO  Dialect:145 - HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+2016-10-23 14:08:59 INFO  TransactionFactoryInitiator:62 - HHH000399: Using default transaction strategy (direct JDBC transactions)
+2016-10-23 14:09:00 INFO  ASTQueryTranslatorFactory:47 - HHH000397: Using ASTQueryTranslatorFactory
+2016-10-23 14:10:05 INFO  SchemaUpdate:207 - HHH000228: Running hbm2ddl schema update
+2016-10-23 14:10:05 INFO  SchemaUpdate:218 - HHH000102: Fetching database metadata
+2016-10-23 14:10:05 INFO  SchemaUpdate:230 - HHH000396: Updating schema
+2016-10-23 14:10:06 INFO  TableMetadata:65 - HHH000261: Table found: bank.customer
+2016-10-23 14:10:06 INFO  TableMetadata:66 - HHH000037: Columns: [birthday, firstname, fathername, nationalid, customerid, id, lastname]
+2016-10-23 14:10:06 INFO  TableMetadata:68 - HHH000108: Foreign keys: []
+2016-10-23 14:10:06 INFO  TableMetadata:69 - HHH000126: Indexes: [uk_56lcwbmybdry0ie1h3nayln65, uk_bi4ed0uxdcr9yy166e6l1rs3k, primary]
+2016-10-23 14:10:06 INFO  TableMetadata:65 - HHH000261: Table found: bank.grantcondition
+2016-10-23 14:10:06 INFO  TableMetadata:66 - HHH000037: Columns: [maxduration, maxcost, name, id, minduration, mincost]
+2016-10-23 14:10:06 INFO  TableMetadata:68 - HHH000108: Foreign keys: []
+2016-10-23 14:10:06 INFO  TableMetadata:69 - HHH000126: Indexes: [primary]
+2016-10-23 14:10:06 INFO  TableMetadata:65 - HHH000261: Table found: bank.loanfile
+2016-10-23 14:10:06 INFO  TableMetadata:66 - HHH000037: Columns: [duration, cost, loantype_id, id, customer_id]
+2016-10-23 14:10:06 INFO  TableMetadata:68 - HHH000108: Foreign keys: [fk_7ual2rnoxs497l9955t106c87, fk_s33nnfr31wh8jysry4p8fhwas]
+2016-10-23 14:10:06 INFO  TableMetadata:69 - HHH000126: Indexes: [fk_7ual2rnoxs497l9955t106c87, primary, fk_s33nnfr31wh8jysry4p8fhwas]
+2016-10-23 14:10:06 INFO  TableMetadata:65 - HHH000261: Table found: bank.loantype
+2016-10-23 14:10:06 INFO  TableMetadata:66 - HHH000037: Columns: [interestrate, name, id]
+2016-10-23 14:10:06 INFO  TableMetadata:68 - HHH000108: Foreign keys: []
+2016-10-23 14:10:06 INFO  TableMetadata:69 - HHH000126: Indexes: [primary]
+2016-10-23 14:10:06 INFO  TableMetadata:65 - HHH000261: Table found: bank.loantype_grantcondition
+2016-10-23 14:10:06 INFO  TableMetadata:66 - HHH000037: Columns: [grantconditionlist_id, loantype_id]
+2016-10-23 14:10:06 INFO  TableMetadata:68 - HHH000108: Foreign keys: [fk_3x8tvabl68jj3nwpit1g9h8qd, fk_e1b2m1kr26vrkl37vobf2jkq3]
+2016-10-23 14:10:06 INFO  TableMetadata:69 - HHH000126: Indexes: [uk_3x8tvabl68jj3nwpit1g9h8qd, fk_e1b2m1kr26vrkl37vobf2jkq3]
+2016-10-23 14:10:06 INFO  SchemaUpdate:267 - HHH000232: Schema update complete
+2016-10-23 14:23:00 INFO  Log:113 - جستجوی اطلاعات مشتری با شماره مشتری: 7
+2016-10-23 14:23:01 WARN  TemplateRenderer:121 - HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2016-10-23 14:23:01 WARN  TemplateRenderer:121 - HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2016-10-23 14:23:01 WARN  TemplateRenderer:121 - HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2016-10-23 14:23:01 WARN  TemplateRenderer:121 - HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2016-10-23 14:23:01 INFO  Log:108 - بازیابی اطلاعات مشتری با شماره ی: 7
+2016-10-23 14:23:20 INFO  Log:113 - جستجوی اطلاعات مشتری با شماره مشتری: 6
+2016-10-23 14:23:20 ERROR Log:105 - بازیابی اطلاعاتی مشتری: شماره ی مشتری اشتباه است.
+2016-10-23 14:23:26 INFO  Log:113 - جستجوی اطلاعات مشتری با شماره مشتری: 5
+2016-10-23 14:23:26 INFO  Log:108 - بازیابی اطلاعات مشتری با شماره ی: 5
+2016-10-23 14:24:31 INFO  Log:113 - جستجوی اطلاعات مشتری با شماره مشتری: 5
+2016-10-23 14:24:31 INFO  Log:108 - بازیابی اطلاعات مشتری با شماره ی: 5
+2016-10-23 14:24:31 INFO  Log:62 - نوع جدیدبازیابی اطلاعات نوع تسهیلات: به نام 
+2016-10-23 14:24:32 ERROR Log:46 - مشکل در ایجاد پرونده ی تسهلاتی جدید 
+مبلغ یا مدت قرار داد در هیچ یک از شروط اعطای تسهیلات صدق نمیکند.
+2016-10-23 15:02:32 INFO  Log:17 - ایجاد نوع تسهیلات جدید به نام وام مسکن
+2016-10-23 15:02:50 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {4.0.5.Final}
+2016-10-23 15:02:50 INFO  Version:54 - HHH000412: Hibernate Core {4.3.10.Final}
+2016-10-23 15:02:50 INFO  Environment:239 - HHH000206: hibernate.properties not found
+2016-10-23 15:02:50 INFO  Environment:346 - HHH000021: Bytecode provider name : javassist
+2016-10-23 15:02:53 INFO  Configuration:2075 - HHH000043: Configuring from resource: /hibernate.cfg.xml
+2016-10-23 15:02:53 INFO  Configuration:2094 - HHH000040: Configuration resource: /hibernate.cfg.xml
+2016-10-23 15:02:53 WARN  DTDEntityResolver:75 - HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+2016-10-23 15:02:55 INFO  Configuration:2216 - HHH000041: Configured SessionFactory: null
+2016-10-23 15:03:14 WARN  DriverManagerConnectionProviderImpl:93 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+2016-10-23 15:03:15 INFO  DriverManagerConnectionProviderImpl:166 - HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/bank?useUnicode=true&characterEncoding=utf-8]
+2016-10-23 15:03:15 INFO  DriverManagerConnectionProviderImpl:175 - HHH000046: Connection properties: {user=root, password=****}
+2016-10-23 15:03:15 INFO  DriverManagerConnectionProviderImpl:180 - HHH000006: Autocommit mode: false
+2016-10-23 15:03:15 INFO  DriverManagerConnectionProviderImpl:102 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2016-10-23 15:03:22 INFO  Dialect:145 - HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+2016-10-23 15:03:46 INFO  TransactionFactoryInitiator:62 - HHH000399: Using default transaction strategy (direct JDBC transactions)
+2016-10-23 15:03:47 INFO  ASTQueryTranslatorFactory:47 - HHH000397: Using ASTQueryTranslatorFactory
+2016-10-23 15:04:50 INFO  SchemaUpdate:207 - HHH000228: Running hbm2ddl schema update
+2016-10-23 15:04:50 INFO  SchemaUpdate:218 - HHH000102: Fetching database metadata
+2016-10-23 15:04:50 INFO  SchemaUpdate:230 - HHH000396: Updating schema
+2016-10-23 15:04:51 INFO  TableMetadata:65 - HHH000261: Table found: bank.customer
+2016-10-23 15:04:51 INFO  TableMetadata:66 - HHH000037: Columns: [birthday, firstname, fathername, nationalid, customerid, id, lastname]
+2016-10-23 15:04:51 INFO  TableMetadata:68 - HHH000108: Foreign keys: []
+2016-10-23 15:04:51 INFO  TableMetadata:69 - HHH000126: Indexes: [uk_56lcwbmybdry0ie1h3nayln65, uk_bi4ed0uxdcr9yy166e6l1rs3k, primary]
+2016-10-23 15:04:51 INFO  DatabaseMetaData:147 - HHH000262: Table not found: EMP_PHONE
+2016-10-23 15:04:51 INFO  DatabaseMetaData:147 - HHH000262: Table not found: GrantCondition
+2016-10-23 15:04:51 INFO  DatabaseMetaData:147 - HHH000262: Table not found: LoanFile
+2016-10-23 15:04:51 INFO  DatabaseMetaData:147 - HHH000262: Table not found: LoanType
+2016-10-23 15:04:51 INFO  DatabaseMetaData:147 - HHH000262: Table not found: EMP_PHONE
+2016-10-23 15:04:51 INFO  DatabaseMetaData:147 - HHH000262: Table not found: GrantCondition
+2016-10-23 15:04:51 INFO  DatabaseMetaData:147 - HHH000262: Table not found: LoanFile
+2016-10-23 15:04:51 INFO  DatabaseMetaData:147 - HHH000262: Table not found: LoanType
+2016-10-23 15:04:51 INFO  DatabaseMetaData:147 - HHH000262: Table not found: EMP_PHONE
+2016-10-23 15:04:51 INFO  DatabaseMetaData:147 - HHH000262: Table not found: GrantCondition
+2016-10-23 15:04:51 INFO  DatabaseMetaData:147 - HHH000262: Table not found: LoanFile
+2016-10-23 15:04:51 INFO  DatabaseMetaData:147 - HHH000262: Table not found: LoanType
+2016-10-23 15:04:53 INFO  SchemaUpdate:267 - HHH000232: Schema update complete
+2016-10-23 15:18:03 INFO  Log:17 - ایجاد نوع تسهیلات جدید به نام وام مسکن
+2016-10-23 15:18:21 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {4.0.5.Final}
+2016-10-23 15:18:22 INFO  Version:54 - HHH000412: Hibernate Core {4.3.10.Final}
+2016-10-23 15:18:22 INFO  Environment:239 - HHH000206: hibernate.properties not found
+2016-10-23 15:18:22 INFO  Environment:346 - HHH000021: Bytecode provider name : javassist
+2016-10-23 15:18:25 INFO  Configuration:2075 - HHH000043: Configuring from resource: /hibernate.cfg.xml
+2016-10-23 15:18:25 INFO  Configuration:2094 - HHH000040: Configuration resource: /hibernate.cfg.xml
+2016-10-23 15:18:25 WARN  DTDEntityResolver:75 - HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+2016-10-23 15:18:26 INFO  Configuration:2216 - HHH000041: Configured SessionFactory: null
+2016-10-23 15:18:47 WARN  DriverManagerConnectionProviderImpl:93 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+2016-10-23 15:18:47 INFO  DriverManagerConnectionProviderImpl:166 - HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/bank?useUnicode=true&characterEncoding=utf-8]
+2016-10-23 15:18:47 INFO  DriverManagerConnectionProviderImpl:175 - HHH000046: Connection properties: {user=root, password=****}
+2016-10-23 15:18:47 INFO  DriverManagerConnectionProviderImpl:180 - HHH000006: Autocommit mode: false
+2016-10-23 15:18:48 INFO  DriverManagerConnectionProviderImpl:102 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2016-10-23 15:18:54 INFO  Dialect:145 - HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+2016-10-23 15:25:24 INFO  Log:17 - ایجاد نوع تسهیلات جدید به نام loanName
+2016-10-23 15:25:42 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {4.0.5.Final}
+2016-10-23 15:25:42 INFO  Version:54 - HHH000412: Hibernate Core {4.3.10.Final}
+2016-10-23 15:25:42 INFO  Environment:239 - HHH000206: hibernate.properties not found
+2016-10-23 15:25:42 INFO  Environment:346 - HHH000021: Bytecode provider name : javassist
+2016-10-23 15:25:45 INFO  Configuration:2075 - HHH000043: Configuring from resource: /hibernate.cfg.xml
+2016-10-23 15:25:45 INFO  Configuration:2094 - HHH000040: Configuration resource: /hibernate.cfg.xml
+2016-10-23 15:25:45 WARN  DTDEntityResolver:75 - HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+2016-10-23 15:25:46 INFO  Configuration:2216 - HHH000041: Configured SessionFactory: null
+2016-10-23 15:26:06 WARN  DriverManagerConnectionProviderImpl:93 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+2016-10-23 15:26:06 INFO  DriverManagerConnectionProviderImpl:166 - HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/bank?useUnicode=true&characterEncoding=utf-8]
+2016-10-23 15:26:06 INFO  DriverManagerConnectionProviderImpl:175 - HHH000046: Connection properties: {user=root, password=****}
+2016-10-23 15:26:06 INFO  DriverManagerConnectionProviderImpl:180 - HHH000006: Autocommit mode: false
+2016-10-23 15:26:07 INFO  DriverManagerConnectionProviderImpl:102 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2016-10-23 15:26:13 INFO  Dialect:145 - HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+2016-10-23 15:35:00 INFO  Log:17 - ایجاد نوع تسهیلات جدید به نام وام مسکن
+2016-10-23 15:35:18 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {4.0.5.Final}
+2016-10-23 15:35:18 INFO  Version:54 - HHH000412: Hibernate Core {4.3.10.Final}
+2016-10-23 15:35:18 INFO  Environment:239 - HHH000206: hibernate.properties not found
+2016-10-23 15:35:18 INFO  Environment:346 - HHH000021: Bytecode provider name : javassist
+2016-10-23 15:35:21 INFO  Configuration:2075 - HHH000043: Configuring from resource: /hibernate.cfg.xml
+2016-10-23 15:35:21 INFO  Configuration:2094 - HHH000040: Configuration resource: /hibernate.cfg.xml
+2016-10-23 15:35:21 WARN  DTDEntityResolver:75 - HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+2016-10-23 15:35:23 INFO  Configuration:2216 - HHH000041: Configured SessionFactory: null
+2016-10-23 15:35:43 WARN  DriverManagerConnectionProviderImpl:93 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+2016-10-23 15:35:43 INFO  DriverManagerConnectionProviderImpl:166 - HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/bank?useUnicode=true&characterEncoding=utf-8]
+2016-10-23 15:35:43 INFO  DriverManagerConnectionProviderImpl:175 - HHH000046: Connection properties: {user=root, password=****}
+2016-10-23 15:35:43 INFO  DriverManagerConnectionProviderImpl:180 - HHH000006: Autocommit mode: false
+2016-10-23 15:35:44 INFO  DriverManagerConnectionProviderImpl:102 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2016-10-23 15:35:50 INFO  Dialect:145 - HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+2016-10-23 15:43:13 INFO  Log:17 - ایجاد نوع تسهیلات جدید به نام وام مسکن
+2016-10-23 15:43:31 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {4.0.5.Final}
+2016-10-23 15:43:31 INFO  Version:54 - HHH000412: Hibernate Core {4.3.10.Final}
+2016-10-23 15:43:31 INFO  Environment:239 - HHH000206: hibernate.properties not found
+2016-10-23 15:43:31 INFO  Environment:346 - HHH000021: Bytecode provider name : javassist
+2016-10-23 15:43:34 INFO  Configuration:2075 - HHH000043: Configuring from resource: /hibernate.cfg.xml
+2016-10-23 15:43:34 INFO  Configuration:2094 - HHH000040: Configuration resource: /hibernate.cfg.xml
+2016-10-23 15:43:34 WARN  DTDEntityResolver:75 - HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+2016-10-23 15:43:36 INFO  Configuration:2216 - HHH000041: Configured SessionFactory: null
+2016-10-23 15:43:56 WARN  DriverManagerConnectionProviderImpl:93 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+2016-10-23 15:43:56 INFO  DriverManagerConnectionProviderImpl:166 - HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/bank?useUnicode=true&characterEncoding=utf-8]
+2016-10-23 15:43:56 INFO  DriverManagerConnectionProviderImpl:175 - HHH000046: Connection properties: {user=root, password=****}
+2016-10-23 15:43:56 INFO  DriverManagerConnectionProviderImpl:180 - HHH000006: Autocommit mode: false
+2016-10-23 15:43:57 INFO  DriverManagerConnectionProviderImpl:102 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2016-10-23 15:44:03 INFO  Dialect:145 - HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+2016-10-23 15:44:27 INFO  TransactionFactoryInitiator:62 - HHH000399: Using default transaction strategy (direct JDBC transactions)
+2016-10-23 15:44:28 INFO  ASTQueryTranslatorFactory:47 - HHH000397: Using ASTQueryTranslatorFactory
+2016-10-23 15:45:31 INFO  SchemaUpdate:207 - HHH000228: Running hbm2ddl schema update
+2016-10-23 15:45:31 INFO  SchemaUpdate:218 - HHH000102: Fetching database metadata
+2016-10-23 15:45:31 INFO  SchemaUpdate:230 - HHH000396: Updating schema
+2016-10-23 15:45:32 INFO  TableMetadata:65 - HHH000261: Table found: bank.customer
+2016-10-23 15:45:32 INFO  TableMetadata:66 - HHH000037: Columns: [birthday, firstname, fathername, nationalid, customerid, id, lastname]
+2016-10-23 15:45:32 INFO  TableMetadata:68 - HHH000108: Foreign keys: []
+2016-10-23 15:45:32 INFO  TableMetadata:69 - HHH000126: Indexes: [uk_56lcwbmybdry0ie1h3nayln65, uk_bi4ed0uxdcr9yy166e6l1rs3k, primary]
+2016-10-23 15:45:32 INFO  DatabaseMetaData:147 - HHH000262: Table not found: GrantCondition
+2016-10-23 15:45:32 INFO  DatabaseMetaData:147 - HHH000262: Table not found: LoanFile
+2016-10-23 15:45:32 INFO  DatabaseMetaData:147 - HHH000262: Table not found: LoanType
+2016-10-23 15:45:32 INFO  DatabaseMetaData:147 - HHH000262: Table not found: GrantCondition
+2016-10-23 15:45:32 INFO  DatabaseMetaData:147 - HHH000262: Table not found: LoanFile
+2016-10-23 15:45:32 INFO  DatabaseMetaData:147 - HHH000262: Table not found: LoanType
+2016-10-23 15:45:32 INFO  DatabaseMetaData:147 - HHH000262: Table not found: GrantCondition
+2016-10-23 15:45:32 INFO  DatabaseMetaData:147 - HHH000262: Table not found: LoanFile
+2016-10-23 15:45:32 INFO  DatabaseMetaData:147 - HHH000262: Table not found: LoanType
+2016-10-23 15:45:33 INFO  SchemaUpdate:267 - HHH000232: Schema update complete
+2016-10-23 15:51:42 ERROR Log:37 - 
+نام برای شرط اعطا مشخص نشده است.
+حداقل مدت قرار داد برای شرط اعطا مشخص نشده است.
+حداکثر مدت قرار داد برای شرط اعطا مشخص نشده است.
+حداقل مبلغ قرار داد برای شرط اعطا مشخص نشده است.
+حداکثر مبلغ قرار داد برای شرط اعطا مشخص نشده است.مشکل در ایجاد شرط اعطا:
+2016-10-23 15:51:58 INFO  Log:17 - ایجاد نوع تسهیلات جدید به نام وام مسکن
+2016-10-23 15:52:16 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {4.0.5.Final}
+2016-10-23 15:52:16 INFO  Version:54 - HHH000412: Hibernate Core {4.3.10.Final}
+2016-10-23 15:52:16 INFO  Environment:239 - HHH000206: hibernate.properties not found
+2016-10-23 15:52:16 INFO  Environment:346 - HHH000021: Bytecode provider name : javassist
+2016-10-23 15:52:19 INFO  Configuration:2075 - HHH000043: Configuring from resource: /hibernate.cfg.xml
+2016-10-23 15:52:19 INFO  Configuration:2094 - HHH000040: Configuration resource: /hibernate.cfg.xml
+2016-10-23 15:52:19 WARN  DTDEntityResolver:75 - HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+2016-10-23 15:52:21 INFO  Configuration:2216 - HHH000041: Configured SessionFactory: null
+2016-10-23 15:52:41 WARN  DriverManagerConnectionProviderImpl:93 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+2016-10-23 15:52:41 INFO  DriverManagerConnectionProviderImpl:166 - HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/bank?useUnicode=true&characterEncoding=utf-8]
+2016-10-23 15:52:41 INFO  DriverManagerConnectionProviderImpl:175 - HHH000046: Connection properties: {user=root, password=****}
+2016-10-23 15:52:41 INFO  DriverManagerConnectionProviderImpl:180 - HHH000006: Autocommit mode: false
+2016-10-23 15:52:42 INFO  DriverManagerConnectionProviderImpl:102 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2016-10-23 15:52:48 INFO  Dialect:145 - HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+2016-10-23 15:53:12 INFO  TransactionFactoryInitiator:62 - HHH000399: Using default transaction strategy (direct JDBC transactions)
+2016-10-23 15:53:13 INFO  ASTQueryTranslatorFactory:47 - HHH000397: Using ASTQueryTranslatorFactory
+2016-10-23 15:54:17 INFO  SchemaUpdate:207 - HHH000228: Running hbm2ddl schema update
+2016-10-23 15:54:17 INFO  SchemaUpdate:218 - HHH000102: Fetching database metadata
+2016-10-23 15:54:18 INFO  SchemaUpdate:230 - HHH000396: Updating schema
+2016-10-23 15:54:18 INFO  TableMetadata:65 - HHH000261: Table found: bank.customer
+2016-10-23 15:54:18 INFO  TableMetadata:66 - HHH000037: Columns: [birthday, firstname, fathername, nationalid, customerid, id, lastname]
+2016-10-23 15:54:18 INFO  TableMetadata:68 - HHH000108: Foreign keys: []
+2016-10-23 15:54:18 INFO  TableMetadata:69 - HHH000126: Indexes: [uk_56lcwbmybdry0ie1h3nayln65, uk_bi4ed0uxdcr9yy166e6l1rs3k, primary]
+2016-10-23 15:54:18 INFO  TableMetadata:65 - HHH000261: Table found: bank.grantcondition
+2016-10-23 15:54:18 INFO  TableMetadata:66 - HHH000037: Columns: [maxduration, maxcost, name, column_name, id, minduration, mincost]
+2016-10-23 15:54:18 INFO  TableMetadata:68 - HHH000108: Foreign keys: [fk_cxevon97a78cr8gewbwo1weh8]
+2016-10-23 15:54:18 INFO  TableMetadata:69 - HHH000126: Indexes: [fk_cxevon97a78cr8gewbwo1weh8, primary]
+2016-10-23 15:54:18 INFO  TableMetadata:65 - HHH000261: Table found: bank.loanfile
+2016-10-23 15:54:18 INFO  TableMetadata:66 - HHH000037: Columns: [duration, cost, loantype_id, id, customer_id]
+2016-10-23 15:54:18 INFO  TableMetadata:68 - HHH000108: Foreign keys: [fk_7ual2rnoxs497l9955t106c87, fk_s33nnfr31wh8jysry4p8fhwas]
+2016-10-23 15:54:18 INFO  TableMetadata:69 - HHH000126: Indexes: [fk_7ual2rnoxs497l9955t106c87, primary, fk_s33nnfr31wh8jysry4p8fhwas]
+2016-10-23 15:54:18 INFO  TableMetadata:65 - HHH000261: Table found: bank.loantype
+2016-10-23 15:54:18 INFO  TableMetadata:66 - HHH000037: Columns: [interestrate, name, id]
+2016-10-23 15:54:18 INFO  TableMetadata:68 - HHH000108: Foreign keys: []
+2016-10-23 15:54:18 INFO  TableMetadata:69 - HHH000126: Indexes: [primary]
+2016-10-23 15:54:19 INFO  SchemaUpdate:267 - HHH000232: Schema update complete

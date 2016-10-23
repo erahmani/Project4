@@ -19,10 +19,10 @@
           <element id="library" level="project" name="Maven: org.jboss:jandex:1.1.0.Final" />
           <element id="library" level="project" name="Maven: org.slf4j:slf4j-log4j12:1.7.12" />
           <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:1.7.12" />
-          <element id="library" level="project" name="Maven: log4j:log4j:1.2.17" />
           <element id="library" level="project" name="Maven: org.javassist:javassist:3.20.0-GA" />
           <element id="library" level="project" name="Maven: mysql:mysql-connector-java:5.1.36" />
           <element id="library" level="project" name="Maven: com.googlecode.json-simple:json-simple:1.1" />
+          <element id="library" level="project" name="Maven: log4j:log4j:1.2.17" />
         </element>
       </element>
       <element id="directory" name="META-INF">

@@ -62,7 +62,7 @@
                 <li> تسهیلات
                     <ul>
                         <li><a href="/loanTypeJsp/create_loan_type.jsp">ایجاد نوع تسهیلات </a></li>
-                        <li><a href="/loanFileJsp/create_loan_file.jsp">ایجاد پرونده تسهیلاتی</a></li>
+                        <li><a href="/LoanFilePageCreationServlet">ایجاد پرونده ی تسهیلاتی</a></li>
                     </ul>
                 </li>
             </ul>
@@ -92,7 +92,7 @@
                     <label>نام شرط اعطا:</label>
                 </div>
                 <div class="fieldInput">
-                    <input type="text" id="name">
+                    <input type="text" id="name" required>
                 </div>
             </div>
 
@@ -101,7 +101,7 @@
                     <label>حداقل مدت قرارداد:</label>
                 </div>
                 <div class="fieldInput">
-                    <input type="number" id="minDuration">
+                    <input type="number" id="minDuration" required>
                 </div>
             </div>
 
@@ -110,7 +110,7 @@
                     <label>حداکثر مدت قرارداد:</label>
                 </div>
                 <div class="fieldInput">
-                    <input type="number" id="maxDuration">
+                    <input type="number" id="maxDuration" required>
                 </div>
             </div>
 
@@ -119,7 +119,7 @@
                     <label>حداقل مبلغ قرارداد:</label>
                 </div>
                 <div class="fieldInput">
-                    <input type="number" id="minCost">
+                    <input type="number" id="minCost" required>
                 </div>
             </div>
 
@@ -128,7 +128,7 @@
                     <label>حداکثر مبلغ قرارداد:</label>
                 </div>
                 <div class="fieldInput">
-                    <input type="number" id="maxCost">
+                    <input type="number" id="maxCost" required>
                 </div>
             </div>
 

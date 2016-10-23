@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table
+@Table(name = "LoanType")
 public class LoanType {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
@@ -28,6 +28,7 @@ public class LoanType {
 
     @Column(nullable = false)
     @OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
+    @JoinColumn(name="loanType_id")
     private List<GrantCondition> grantConditionList = new ArrayList<GrantCondition>();
 
     public LoanType(String name, Short interestRate, List<GrantCondition> grantConditionList) {

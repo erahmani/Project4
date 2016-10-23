@@ -58,8 +58,7 @@
         }
     %>
 </head>
-<!--  //onsubmit="return
-validateForm()"-->
+
 <body dir="rtl">
 <div class="block">
     <div class="bar">
@@ -80,14 +79,14 @@ validateForm()"-->
         </div>
     </div>
     <div class="formBlock">
-        <form name="registrationForm" action="/CustomerRegistrationServlet" method="POST">
+        <form name="registrationForm" action="/CustomerRegistrationServlet" method="POST" onsubmit="return validateForm()">
             <div>
                 <div class="field">
                     <div class="fieldLabel">
                         <label> نام :</label>
                     </div>
                     <div class="fieldInput">
-                        <input type="text" name="firstName" value="<%=firstName%>">
+                        <input type="text" name="firstName" value="<%=firstName%>" required>
                     </div>
                 </div>
 
@@ -96,7 +95,7 @@ validateForm()"-->
                         <label> نام خانوادگی:</label>
                     </div>
                     <div class="fieldInput">
-                        <input type="text" name="lastName" value="<%=lastName%>">
+                        <input type="text" name="lastName" value="<%=lastName%>" required>
                     </div>
                 </div>
 
@@ -105,7 +104,7 @@ validateForm()"-->
                         <label>نام پدر:</label>
                     </div>
                     <div class="fieldInput">
-                        <input type="text" name="fatherName" value="<%=fatherName%>">
+                        <input type="text" name="fatherName" value="<%=fatherName%>" required>
                     </div>
                 </div>
 
@@ -114,7 +113,7 @@ validateForm()"-->
                         <label>تاریخ تولد:</label>
                     </div>
                     <div class="fieldInput">
-                        <input type="date" name="birthDay" value="<%=birthDay%>">
+                        <input type="date" name="birthDay" value="<%=birthDay%>" required>
                     </div>
                 </div>
 
@@ -123,13 +122,13 @@ validateForm()"-->
                         <label>کد ملی:</label>
                     </div>
                     <div class="fieldInput">
-                        <input type="number" name="nationalId" value="<%=nationalId%>">
+                        <input type="number" name="nationalId" value="<%=nationalId%>" required>
                     </div>
                 </div>
             </div>
             <div class="button">
                 <div class="formButton">
-                    <input class="button" type="submit" value="ثبت">
+                    <input class="button" type="submit" value="ثبت" >
                 </div>
                 <div class="formButton">
                     <input class="button" type="reset" value="بازنشانی">

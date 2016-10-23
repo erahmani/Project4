@@ -95,6 +95,11 @@ public class CustomerBusinessLogic {
     }
 
     public static List<Customer> retrieveInfo(Integer customerId) {
+        if (customerId == null) {
+            Log.log.error("بازیابی اطلاعاتی مشتری: شماره ی مشتری وارد نشده است.");
+            throw new InValidCustomerIdException("شماره ی مشتری وارد نشده است.");
+        }
+
         List<Customer> customerList = read(null, null, customerId.toString(), null);
         if (customerList.size() == 0) {
             Log.log.error("بازیابی اطلاعاتی مشتری: شماره ی مشتری اشتباه است.");

@@ -1,5 +1,6 @@
 package businessLogic.loan;
 
+import businessLogic.customer.exception.InValidCustomerIdException;
 import businessLogic.loan.exception.EmptyGrantConditionException;
 import businessLogic.loan.exception.InValidLoanTypeFieldException;
 import businessLogic.loan.exception.InValidLoanTypeIdException;
@@ -48,6 +49,11 @@ public class LoanTypeBusinessLogic {
     }
 
     static List<LoanType> retrieveInfo(Integer id) {
+        if (id == null) {
+            Log.log.error("بازیابی اطلاعاتی مشتری: نوع تسهیلات انتخاب شده صحیح نمی باشد.");
+            throw new InValidCustomerIdException(" نوع تسهیلات انتخاب شده صحیح نمی باشد.");
+        }
+
         List<LoanType> loanTypeList = LoanTypeCRUD.read(id);
         if (loanTypeList.size() == 0) {
             Log.log.error("بازیابی اطلاعات نوع تسهیلات: نوع تسهیلات انتخاب شده صحیح نمی باشد.");

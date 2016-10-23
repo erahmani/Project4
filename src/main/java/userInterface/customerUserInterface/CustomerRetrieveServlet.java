@@ -21,15 +21,26 @@ public class CustomerRetrieveServlet extends HttpServlet {
         JSONObject jsonCustomer = new JSONObject();
         try {
             String customerId = request.getParameter("customerId");
-            List<Customer> customer = CustomerBusinessLogic.retrieveInfo(Integer.parseInt(customerId));
+            System.out.println("customerId:" + createIntegerNumber(customerId));
+            List<Customer> customer = CustomerBusinessLogic.retrieveInfo(createIntegerNumber(customerId));
             jsonCustomer.put("firstName", customer.get(0).getFirstName());
             jsonCustomer.put("lastName", customer.get(0).getLastName());
             response.setContentType("application/json");
             response.getWriter().print(jsonCustomer);
         } catch (InValidCustomerIdException e) {
-            jsonCustomer.put("address", "/LoanFilePageCreationServlet?errorMessage=" + e.getMessage());
+            System.out.println(e.getMessage());
+            jsonCustomer.put("errorMessage", e.getMessage());
             response.setContentType("application/json");
             response.getWriter().print(jsonCustomer);
         }
     }
+
+    private Integer createIntegerNumber(String num) {
+        try {
+            return Integer.parseInt(num);
+        } catch (NumberFormatException e) {
+            return null;
+        }
+    }
+
 }

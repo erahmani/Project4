@@ -20,9 +20,10 @@
             request.onreadystatechange = function () {
                 if ((request.readyState == 4) && (request.status == 200)) {
                     var info = JSON.parse(request.response);
-                    if (info.address != null) {
-                        window.location = info.address;
+                    if (info.errorMessage != null) {
+                        document.getElementById("errorMessage").innerHTML = info.errorMessage;
                     } else {
+                        document.getElementById("errorMessage").innerHTML = "";
                         document.getElementById("firstName").value = info.firstName;
                         document.getElementById("lastName").value = info.lastName;
                         document.getElementById("customerId_hidden").value = document.getElementById("customerId").value;
@@ -46,11 +47,12 @@
             opt.innerHTML = <%="\""+loanType.getName()+"\""%>;
             loanTypeList.appendChild(opt);
             <%}}%>
+            invalidateSession();
         }
     </script>
 </head>
 
-<body onload="invalidateSession()" dir="rtl">
+<body onload="setSelectOptions()" dir="rtl">
 <div class="block">
     <div class="bar">
         <div class="menuPosition">
@@ -110,7 +112,7 @@
                     <label> شماره مشتری:</label>
                 </div>
                 <div class="fieldInput">
-                    <input type="number" id="customerId_hidden" name="customerId">
+                    <input type="number" id="customerId_hidden" name="customerId" required>
                 </div>
             </div>
 
@@ -119,7 +121,7 @@
                     <label> مدت قرارداد:</label>
                 </div>
                 <div class="fieldInput">
-                    <input type="number" name="duration">
+                    <input type="number" name="duration" required>
                 </div>
             </div>
 
@@ -128,7 +130,7 @@
                     <label> مبلغ قرارداد:</label>
                 </div>
                 <div class="fieldInput">
-                    <input type="number" name="cost">
+                    <input type="number" name="cost" required>
                 </div>
             </div>
             <div class="field">
@@ -136,7 +138,7 @@
                     <label> نوع تسهیلات:</label>
                 </div>
                 <div class="fieldInput">
-                    <select name="loanTypeList" id="loanTypeList">
+                    <select name="loanTypeList" id="loanTypeList" required>
                     </select>
                 </div>
             </div>
@@ -153,12 +155,13 @@
         </form>
     </div>
 </div>
-<div class="errorBlock">
+<div id = "errorMessage" class="errorBlock">
     <%
         Object errorMessage = request.getAttribute("errorMessage");
         if (errorMessage != null) { %>
     <pre>
         <h2><%=errorMessage.toString()%>
+
     </h2></pre>
     <%}%>
 </div>

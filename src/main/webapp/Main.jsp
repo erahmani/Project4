@@ -3,7 +3,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <%@ page contentType="text/html; charset=UTF-8" %>
-    <title>ثبت نام مشتری</title>
+    <title>خانه</title>
     <link rel="stylesheet" type="text/css" href="/css/form-style.css">
     <link rel="stylesheet" type="text/css" href="/css/menu-style.css">
     <script>
@@ -36,7 +36,7 @@
                 <li> تسهیلات
                     <ul>
                         <li><a href="/loanTypeJsp/create_loan_type.jsp">ایجاد نوع تسهیلات </a></li>
-                        <li><a href="/loanFileJsp/create_loan_file.jsp">ایجاد پرونده ی تسهیلاتی</a></li>
+                        <li><a href="/LoanFilePageCreationServlet">ایجاد پرونده ی تسهیلاتی</a></li>
                     </ul>
                 </li>
             </ul>

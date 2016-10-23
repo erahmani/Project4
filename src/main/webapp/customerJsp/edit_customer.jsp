@@ -101,7 +101,7 @@
                         <label> نام :</label>
                     </div>
                     <div class="fieldInput">
-                        <input type="text" name="firstName" value="<%=firstName%>">
+                        <input type="text" name="firstName" value="<%=firstName%>" required>
                     </div>
                 </div>
 
@@ -110,7 +110,7 @@
                         <label> نام خانوادگی:</label>
                     </div>
                     <div class="fieldInput">
-                        <input type="text" name="lastName" value="<%=lastName%>">
+                        <input type="text" name="lastName" value="<%=lastName%>" required>
                     </div>
                 </div>
 
@@ -119,7 +119,7 @@
                         <label>نام پدر:</label>
                     </div>
                     <div class="fieldInput">
-                        <input type="text" name="fatherName" value="<%=fatherName%>">
+                        <input type="text" name="fatherName" value="<%=fatherName%>" required>
                     </div>
                 </div>
 
@@ -128,7 +128,7 @@
                         <label>تاریخ تولد:</label>
                     </div>
                     <div class="fieldInput">
-                        <input type="date" name="birthDay" value="<%=birthDay%>">
+                        <input type="date" name="birthDay" value="<%=birthDay%>" required>
                     </div>
                 </div>
 
@@ -137,7 +137,7 @@
                         <label>کد ملی:</label>
                     </div>
                     <div class="fieldInput">
-                        <input type="number" name="nationalId" value="<%=nationalId%>">
+                        <input type="number" name="nationalId" value="<%=nationalId%>" required>
                     </div>
                 </div>
             </div>

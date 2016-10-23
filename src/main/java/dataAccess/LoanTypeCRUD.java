@@ -11,7 +11,7 @@ public class LoanTypeCRUD {
 
     public static void create(LoanType loanType, List<GrantCondition> grantConditionList) {
         Session session = DBUtil.SESSION_FACTORY.openSession();
-        Transaction transaction = null;
+        Transaction transaction;
         try {
             transaction = session.beginTransaction();
             session.save(loanType);
@@ -21,13 +21,11 @@ public class LoanTypeCRUD {
             }
             transaction.commit();
         } catch (HibernateException ex) {
-            if (transaction != null) {
-                transaction.rollback();
-            }
             ex.printStackTrace();
         } finally {
             session.close();
         }
+
     }
 
     public static List<LoanType> read(Integer loanTypeId) {
